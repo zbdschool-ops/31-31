@@ -1,0 +1,2149 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>§ 31. Бюджет: доходи та витрати | Тренажер «Навігатор ризиків»</title>
+<style>
+:root{--primary:#1e3a8a;--primary-dark:#1e2a5e;--primary-light:#3b5ccc;--accent:#2563eb;--success:#16a34a;--danger:#dc2626;--warning:#f59e0b;--bg:#f1f5f9;--card:#fff;--text:#1e293b;--text-muted:#64748b;--border:#e2e8f0;--theory-blue:#dbeafe;--theory-green:#dcfce7;--theory-purple:#f3e8ff;--theory-orange:#ffedd5;--theory-pink:#fce7f3;--theory-yellow:#fef3c7;--theory-red:#fee2e2}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:linear-gradient(135deg,#f3f4f6,#e5e7eb);color:var(--text);line-height:1.6;min-height:100vh;overflow-x:hidden;font-size:16px}
+.top-progress-bar{position:fixed;top:0;left:0;right:0;height:4px;background:var(--border);z-index:1001}
+.top-progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--success));width:0%;transition:width .5s}
+.progress-widget{position:fixed;top:80px;right:20px;background:#fff;padding:10px 12px;border-radius:10px;box-shadow:0 2px 10px rgba(30,58,138,.12);z-index:1000;min-width:150px;cursor:pointer;transition:all .3s}
+.progress-widget:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(30,58,138,.18)}
+.progress-widget-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;padding-bottom:8px;border-bottom:2px solid var(--border)}
+.progress-widget-title{font-weight:700;color:var(--primary);font-size:12px}
+.progress-widget-percentage{font-size:18px;font-weight:700;color:var(--accent)}
+.progress-widget-mini-map{display:flex;gap:4px;margin-top:8px}
+.mini-step{width:18px;height:18px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:600;color:var(--text-muted);transition:all .3s}
+.mini-step.current{background:var(--warning);color:#fff;animation:pulse 1.5s infinite}
+.mini-step.completed{background:var(--success);color:#fff}
+.toast-container{position:fixed;top:100px;right:20px;z-index:1002;display:flex;flex-direction:column;gap:8px;max-width:calc(100vw - 40px)}
+.toast{background:#fff;padding:16px 20px;border-radius:12px;box-shadow:0 8px 24px rgba(30,58,138,.2);display:flex;align-items:center;gap:12px;animation:toastIn .4s;border-left:4px solid var(--success);min-width:280px;max-width:360px}
+.toast.hiding{animation:toastOut .4s forwards}
+@keyframes toastIn{from{opacity:0;transform:translateX(100px)}to{opacity:1;transform:translateX(0)}}
+@keyframes toastOut{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(100px)}}
+.toast-icon{font-size:24px;flex-shrink:0}
+.toast-message{font-weight:600;color:var(--text);font-size:14px}
+.header{background:linear-gradient(135deg,#1e2a5e 0%,#1e3a8a 50%,#2563eb 100%);color:#fff;padding:24px 32px;border-radius:0 0 16px 16px;box-shadow:0 4px 16px rgba(30,58,138,.15);margin-top:4px}
+.header-content{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.header h1{font-size:22px;font-weight:700;flex:1;min-width:200px}
+.header-buttons{display:flex;gap:12px;flex-wrap:wrap}
+.btn{padding:12px 24px;border-radius:10px;font-weight:600;cursor:pointer;transition:all .2s;border:none;font-size:16px;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;white-space:nowrap}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#1d4ed8;box-shadow:0 4px 12px rgba(37,99,235,.3);transform:translateY(-2px)}
+.btn-secondary{background:#fff;color:var(--accent);border:2px solid var(--accent)}
+.btn-secondary:hover{background:#eff6ff}
+.btn-warning{background:var(--warning);color:#fff}
+.btn-warning:hover{background:#d97706}
+.btn-success{background:var(--success);color:#fff}
+.btn-success:hover{background:#15803d}
+.btn:focus{outline:3px solid #93c5fd;outline-offset:2px}
+.container{max-width:1200px;margin:0 auto;padding:40px 24px}
+.hero-unified{background:#fff;border-radius:16px;box-shadow:0 4px 16px rgba(30,58,138,.08);overflow:hidden;display:grid;grid-template-columns:1.3fr .7fr;align-items:stretch}
+.hero-illustration{background:#fff;padding:20px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.hero-illustration img{max-width:100%;height:auto;max-height:500px;object-fit:contain;border-radius:16px;display:block;margin:0 auto}
+.hero-illustration-title{color:var(--primary);font-size:20px;font-weight:700;margin-bottom:16px;padding-bottom:5px;border-bottom:2px solid var(--border);display:flex;align-items:center;justify-content:center;gap:8px}
+.hero-navigation{padding:20px 24px;display:flex;flex-direction:column;justify-content:center;border-left:1px solid #e2e8f0}
+.hero-navigation h2{color:var(--primary);font-size:16px;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:8px}
+.step-navigation{display:flex;flex-direction:column;gap:8px;flex:1}
+.step-nav-item{padding:8px 10px;border-radius:6px;cursor:pointer;transition:all .3s;border:2px solid var(--border);display:flex;align-items:center;gap:10px}
+.step-nav-item:hover{border-color:var(--accent);background:#eff6ff;transform:translateX(4px)}
+.step-nav-item.active{border-color:var(--warning);background:#fef3c7}
+.step-nav-item.completed{border-color:var(--success);background:#dcfce7}
+.step-nav-number{width:26px;height:26px;border-radius:50%;background:var(--border);color:var(--text-muted);display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-size:11px}
+.step-nav-item.active .step-nav-number{background:var(--warning);color:#fff}
+.step-nav-item.completed .step-nav-number{background:var(--success);color:#fff}
+.step-nav-content{flex:1;min-width:0}
+.step-nav-title{font-weight:600;color:var(--text);font-size:12px;line-height:1.3}
+.step-nav-status{font-size:10px;color:var(--text-muted)}
+.info-blocks{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px}
+.card{background:var(--card);border-radius:16px;padding:28px;box-shadow:0 4px 16px rgba(30,58,138,.08);margin-bottom:24px;transition:box-shadow .2s}
+.card:hover{box-shadow:0 8px 24px rgba(30,58,138,.14)}
+.card h2{font-size:22px;margin-bottom:16px;color:var(--primary)}
+.card h3{font-size:18px;margin-bottom:12px;color:var(--primary-dark)}
+.feature-list{list-style:none;padding:0}
+.feature-list li{padding:10px 0 10px 32px;position:relative;border-bottom:1px solid var(--border);font-size:15px}
+.feature-list li:last-child{border-bottom:none}
+.feature-list li::before{content:attr(data-icon);position:absolute;left:0;font-size:18px;top:10px}
+.tip-card{background:linear-gradient(135deg,#fef3c7,#fde68a);border-radius:12px;padding:16px;text-align:center;margin-top:24px;font-size:15px}
+.step-header{background:#fff;border-radius:16px;padding:24px;margin-bottom:24px;box-shadow:0 4px 16px rgba(30,58,138,.08)}
+.step-header-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:12px}
+.step-title{font-size:24px;color:var(--primary);font-weight:700}
+.step-badge{background:var(--warning);color:#fff;padding:6px 16px;border-radius:20px;font-weight:600;font-size:14px}
+.theory-compact{background:linear-gradient(135deg,var(--theory-blue),#bfdbfe);border:2px solid #93c5fd;border-radius:14px;padding:20px;margin:16px 0}
+.theory-compact h4{color:var(--primary);font-size:16px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.theory-compact p{font-size:14px;line-height:1.6;margin-bottom:8px}
+.theory-compact ul{list-style:none;padding:0}
+.theory-compact ul li{padding:6px 0 6px 24px;position:relative;font-size:14px}
+.theory-compact ul li::before{content:attr(data-icon);position:absolute;left:0;font-size:16px;top:6px}
+.key-point{background:linear-gradient(135deg,#fef3c7,#fde68a);border:2px solid #fbbf24;border-radius:12px;padding:16px;margin:16px 0;text-align:center;font-weight:600;color:#78350f}
+.key-point::before{content:'💡';font-size:20px}
+.situation-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:24px;margin:24px 0;align-items:start}
+.situation-illustration-left{background:linear-gradient(135deg,#eff6ff,#dbeafe);border:2px solid #93c5fd;border-radius:12px;padding:20px;text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:240px}
+.situation-img{max-width:100%;height:auto;max-height:200px;object-fit:contain;border-radius:8px;margin-bottom:12px;display:block;margin-left:auto;margin-right:auto}
+.situation-caption{font-size:13px;color:var(--text-muted);font-style:italic;margin-top:8px}
+.situation-content-right{display:flex;flex-direction:column;gap:16px}
+.question-highlight{background:linear-gradient(135deg,#fef3c7,#fde68a);border:3px solid #f59e0b;border-radius:16px;padding:20px 24px;margin-bottom:20px;text-align:center;box-shadow:0 4px 16px rgba(245,158,11,.15);position:relative;overflow:hidden}
+.question-highlight-icon{font-size:48px;margin-bottom:8px;display:block}
+.question-highlight-text{font-size:20px;font-weight:700;color:#78350f;line-height:1.4;position:relative;z-index:1}
+.question-highlight-sub{font-size:14px;color:#92400e;margin-top:8px;font-style:italic;position:relative;z-index:1}
+.task-options{display:grid;gap:12px;margin:20px 0}
+.option{padding:16px;border:2px solid var(--border);border-radius:12px;cursor:pointer;transition:all .2s;display:flex;align-items:flex-start;gap:12px}
+.option:hover:not(.disabled){border-color:var(--accent);background:#eff6ff}
+.option.selected{border-color:var(--accent);background:#eff6ff}
+.option.correct{border-color:var(--success);background:#dcfce7}
+.option.incorrect{border-color:var(--danger);background:#fee2e2}
+.option.disabled{cursor:default;opacity:.8}
+.option-radio,.option-checkbox{width:24px;height:24px;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.option-radio{border-radius:50%}
+.option-checkbox{border-radius:6px}
+.option.selected .option-radio,.option.selected .option-checkbox{border-color:var(--accent);background:var(--accent)}
+.option.selected .option-radio::after,.option.selected .option-checkbox::after{content:'✓';color:#fff;font-size:14px}
+.option.correct .option-radio,.option.correct .option-checkbox{border-color:var(--success);background:var(--success)}
+.option.correct .option-radio::after,.option.correct .option-checkbox::after{content:'✓';color:#fff;font-size:14px}
+.option.incorrect .option-radio,.option.incorrect .option-checkbox{border-color:var(--danger);background:var(--danger)}
+.option.incorrect .option-radio::after,.option.incorrect .option-checkbox::after{content:'✕';color:#fff;font-size:14px}
+.option-text{flex:1}
+.option-label{font-weight:600;margin-bottom:4px}
+.feedback{padding:16px;border-radius:12px;margin:16px 0;animation:fadeIn .3s}
+.feedback-success{background:#dcfce7;border:2px solid var(--success);color:#166534}
+.feedback-error{background:#fee2e2;border:2px solid var(--danger);color:#991b1b}
+.feedback-warning{background:#fef3c7;border:2px solid var(--warning);color:#92400e}
+.navigation{display:flex;justify-content:space-between;gap:12px;margin-top:32px;flex-wrap:wrap}
+.navigation .btn{flex:1;min-width:140px}
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(15,23,42,.6);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:2000;opacity:0;visibility:hidden;transition:all .3s;padding:20px}
+.modal-overlay.active{opacity:1;visibility:visible}
+.modal{background:#fff;border-radius:16px;padding:32px;max-width:560px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 12px 40px rgba(30,58,138,.22);transform:scale(.9);transition:transform .3s}
+.modal-overlay.active .modal{transform:scale(1)}
+.modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;gap:12px}
+.modal-header h2{color:var(--primary);font-size:22px}
+.modal-close{background:none;border:none;font-size:28px;cursor:pointer;color:var(--text-muted);width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:8px}
+.modal-close:hover{background:var(--bg);color:var(--text)}
+.text-center{text-align:center}
+.mb-24{margin-bottom:24px}
+.mt-24{margin-top:24px}
+.hidden{display:none!important}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.step6-header{background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;padding:32px;border-radius:16px;margin-bottom:24px;text-align:center;box-shadow:0 4px 16px rgba(245,158,11,.3)}
+.step6-header h2{font-size:28px;font-weight:800;margin-bottom:8px}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-bottom:24px}
+.stat-card{background:#fff;padding:20px;border-radius:12px;box-shadow:0 4px 12px rgba(30,58,138,.08);text-align:center}
+.stat-value{font-size:32px;font-weight:800;color:var(--primary)}
+.stat-label{font-size:14px;color:var(--text-muted);margin-top:4px}
+.progress-circle-container{display:flex;justify-content:center;align-items:center;margin:24px 0}
+.progress-circle{width:180px;height:180px;border-radius:50%;background:conic-gradient(var(--success) 0%,var(--bg) 0%);display:flex;justify-content:center;align-items:center;transition:background 1s;box-shadow:0 4px 16px rgba(30,58,138,.1)}
+.progress-circle-inner{width:140px;height:140px;background:#fff;border-radius:50%;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.circle-percentage{font-size:40px;font-weight:800;color:var(--primary)}
+.circle-label{font-size:14px;color:var(--text-muted)}
+.level-badge{display:inline-flex;align-items:center;gap:12px;background:linear-gradient(135deg,#eff6ff,#dbeafe);border:2px solid #bfdbfe;padding:16px 24px;border-radius:12px;margin:16px 0}
+.level-badge-icon{font-size:40px}
+.level-badge-title{font-size:18px;font-weight:700;color:var(--primary)}
+.level-badge-desc{font-size:14px;color:var(--text-muted)}
+.skill-eval{margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.skill-eval:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.skill-title{font-weight:600;font-size:16px}
+.star-rating{display:flex;gap:8px;margin-top:8px}
+.star{font-size:24px;cursor:pointer;color:var(--border);transition:color .2s}
+.star:hover,.star.active{color:var(--warning)}
+.accordion-item{background:#fff;border:2px solid var(--border);border-radius:12px;margin:12px 0;transition:border-color .3s}
+.accordion-item:hover{border-color:var(--accent)}
+.accordion-item.active{border-color:var(--accent)}
+.accordion-header{padding:16px 20px;background:linear-gradient(135deg,#eff6ff,#dbeafe);cursor:pointer;font-weight:600;color:var(--primary);display:flex;justify-content:space-between;align-items:center;transition:all .2s;user-select:none;border-radius:10px}
+.accordion-header:hover{background:linear-gradient(135deg,#dbeafe,#bfdbfe)}
+.accordion-item.active .accordion-header{border-radius:10px 10px 0 0;background:linear-gradient(135deg,#dbeafe,#bfdbfe)}
+.accordion-icon{font-size:20px;transition:transform .3s;flex-shrink:0;margin-left:8px}
+.accordion-item.active .accordion-icon{transform:rotate(180deg)}
+.accordion-content{max-height:0;overflow:hidden;transition:max-height .4s ease-out}
+.accordion-item.active .accordion-content{max-height:5000px;overflow:visible}
+.accordion-body{padding:16px 20px;border-top:2px solid var(--border);background:#fff;border-radius:0 0 10px 10px}
+.income-tree{background:linear-gradient(135deg,#f0f9ff,#e0f2fe);border:2px solid #7dd3fc;border-radius:16px;padding:24px;margin:20px 0}
+.income-tree h4{color:#0369a1;font-size:17px;margin-bottom:16px;text-align:center}
+.income-root{background:linear-gradient(135deg,#fef3c7,#fde68a);border:2px solid #f59e0b;border-radius:12px;padding:14px;text-align:center;font-weight:700;color:#78350f;margin-bottom:16px;font-size:16px}
+.income-branches{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.income-branch{background:#fff;border-radius:12px;padding:14px;border-left:4px solid var(--accent);transition:all .3s;cursor:pointer;display:flex;align-items:center;justify-content:center;min-height:60px}
+.income-branch:hover{transform:translateY(-3px);box-shadow:0 6px 16px rgba(0,0,0,.08)}
+.income-branch.active{box-shadow:0 0 0 3px rgba(37,99,235,.3)}
+.income-branch h5{color:var(--primary);font-size:15px;margin:0;display:flex;align-items:center;gap:8px;text-align:center;justify-content:center}
+.branch-labor{border-left-color:#16a34a}
+.branch-property{border-left-color:#2563eb}
+.branch-social{border-left-color:#f59e0b}
+.branch-other{border-left-color:#a855f7}
+.income-details{background:#fff;border:2px dashed var(--border);border-radius:12px;padding:16px;margin-top:16px;min-height:100px;transition:all .3s}
+.income-details.active{border-style:solid;border-color:var(--accent)}
+.income-details h5{color:var(--primary);margin-bottom:8px;font-size:15px;display:flex;align-items:center;gap:8px}
+.employment-accordion{margin:20px 0}
+.emp-card{background:#fff;border:2px solid var(--border);border-radius:14px;margin-bottom:12px;overflow:hidden;transition:all .3s}
+.emp-card:hover{border-color:var(--accent)}
+.emp-card.active{border-color:var(--emp-color,var(--accent));box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.emp-card-header{padding:16px 20px;cursor:pointer;display:flex;align-items:center;gap:14px;user-select:none;transition:background .2s;background:linear-gradient(135deg,#fff,#f8fafc)}
+.emp-card-header:hover{background:linear-gradient(135deg,#eff6ff,#dbeafe)}
+.emp-card.active .emp-card-header{background:linear-gradient(135deg,#eff6ff,#dbeafe)}
+.emp-card-icon{font-size:36px;flex-shrink:0}
+.emp-card-title-wrap{flex:1;min-width:0}
+.emp-card-title{font-weight:700;color:var(--primary);font-size:16px;line-height:1.3}
+.emp-card-subtitle{font-size:12px;color:var(--text-muted);margin-top:2px;font-style:italic}
+.emp-card-arrow{font-size:22px;color:var(--text-muted);transition:transform .3s;flex-shrink:0;margin-left:8px}
+.emp-card.active .emp-card-arrow{transform:rotate(180deg);color:var(--accent)}
+.emp-card-content{max-height:0;overflow:hidden;transition:max-height .4s ease-out}
+.emp-card.active .emp-card-content{max-height:1000px}
+.emp-card-body{padding:0 20px 20px 20px;border-top:2px solid var(--border);background:linear-gradient(135deg,#f8fafc,#eff6ff)}
+.emp-card-body-inner{padding-top:16px}
+.emp-details-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:12px}
+.emp-details-grid div{background:#fff;padding:12px;border-radius:8px;font-size:13px;border-left:3px solid var(--emp-color,var(--accent))}
+.emp-details-grid strong{color:var(--primary);display:block;margin-bottom:4px;font-size:12px}
+.emp-examples{background:#fff;border-radius:8px;padding:12px;border-left:3px solid var(--warning)}
+.emp-examples strong{color:var(--primary);display:block;margin-bottom:6px;font-size:13px}
+.emp-examples ul{list-style:none;padding:0}
+.emp-examples li{padding:4px 0 4px 20px;position:relative;font-size:13px}
+.emp-examples li::before{content:'•';position:absolute;left:6px;color:var(--accent);font-weight:700}
+.tap-instruction{background:linear-gradient(135deg,#fef3c7,#fde68a);border:2px solid #fbbf24;border-radius:10px;padding:12px 16px;margin-bottom:16px;display:flex;align-items:center;gap:12px;font-size:14px;color:#78350f}
+.tap-instruction-icon{font-size:24px;flex-shrink:0}
+.tap-instruction strong{color:#78350f}
+.classify-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+.classify-col{background:#fff;border:2px solid var(--border);border-radius:12px;padding:16px;min-height:200px;transition:all .2s}
+.classify-col h4{margin-bottom:12px;font-size:15px;padding:10px;border-radius:8px;text-align:center}
+.classify-col.labor h4{background:linear-gradient(135deg,#dcfce7,#bbf7d0);color:#166534}
+.classify-col.nonlabor h4{background:linear-gradient(135deg,#fef3c7,#fde68a);color:#78350f}
+.classify-item{background:#fff;padding:12px;border:2px solid var(--border);border-radius:8px;margin-bottom:8px;cursor:pointer;user-select:none;-webkit-user-select:none;transition:all .2s;font-size:14px;display:flex;align-items:center;gap:10px;min-height:48px}
+.classify-item:hover{border-color:var(--accent);background:#eff6ff}
+.classify-item.selected{border-color:var(--warning);background:#fef3c7;box-shadow:0 0 0 3px rgba(245,158,11,.3)}
+.classify-item.correct{border-color:var(--success);background:#dcfce7}
+.classify-item.incorrect{border-color:var(--danger);background:#fee2e2}
+.dnd-reset-btn{margin-top:12px;padding:8px 16px;background:var(--bg);border:1px solid var(--border);border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;color:var(--text);transition:all .2s}
+.dnd-reset-btn:hover{background:#e2e8f0}
+.rules-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:16px 0}
+.rule-card{background:#fff;border-radius:12px;padding:16px;border-left:4px solid var(--accent);transition:all .2s;cursor:pointer}
+.rule-card:hover{transform:translateY(-3px);box-shadow:0 6px 16px rgba(0,0,0,.08)}
+.rule-card h5{color:var(--primary);font-size:14px;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.rule-card p{font-size:13px;color:var(--text);line-height:1.5}
+.tf-container{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+.tf-card{background:#fff;border-radius:12px;padding:20px;border:2px solid var(--border);text-align:center;transition:all .3s;cursor:pointer}
+.tf-card:hover{transform:translateY(-3px);box-shadow:0 6px 16px rgba(0,0,0,.08)}
+.tf-card.selected{border-color:var(--warning);box-shadow:0 0 0 3px rgba(245,158,11,.3)}
+.tf-card.correct{border-color:var(--success);background:#dcfce7}
+.tf-card.incorrect{border-color:var(--danger);background:#fee2e2}
+.tf-card-icon{font-size:48px;margin-bottom:12px}
+.tf-card-title{font-weight:700;font-size:18px;margin-bottom:8px}
+.tf-card-desc{font-size:13px;color:var(--text-muted)}
+.sort-container{background:linear-gradient(135deg,#eff6ff,#dbeafe);border:2px solid #93c5fd;border-radius:14px;padding:20px;margin:16px 0}
+.sort-bank{min-height:80px;padding:12px;background:#fff;border:2px dashed var(--border);border-radius:10px;margin-bottom:20px}
+.sort-bank-title{font-weight:600;color:var(--primary);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.sort-slots{display:flex;flex-direction:column;gap:10px}
+.sort-slot{background:#fff;border:2px dashed var(--border);border-radius:10px;padding:12px;min-height:56px;display:flex;align-items:center;gap:12px;transition:all .2s;cursor:pointer}
+.sort-slot:hover{border-color:var(--accent);background:#eff6ff}
+.sort-slot.filled{border-style:solid;border-color:var(--accent);background:#eff6ff;cursor:pointer}
+.sort-slot.filled:hover{border-color:var(--danger);background:#fee2e2}
+.sort-slot.correct-pos{border-color:var(--success);background:#dcfce7}
+.sort-slot.incorrect-pos{border-color:var(--danger);background:#fee2e2}
+.sort-slot-number{width:36px;height:36px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;flex-shrink:0}
+.sort-slot.filled .sort-slot-number{background:var(--accent)}
+.sort-slot-placeholder{color:var(--text-muted);font-size:14px;font-style:italic;flex:1}
+.sort-slot-content{flex:1;font-size:14px;font-weight:500;color:var(--text)}
+.sort-slot-remove{background:var(--danger);color:#fff;border:none;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;font-weight:700;flex-shrink:0}
+.sort-slot-remove:hover{background:#991b1b}
+.budget-sim{background:linear-gradient(135deg,#fef3c7,#fde68a);border:2px solid #fbbf24;border-radius:14px;padding:20px;margin:16px 0}
+.budget-sim h4{color:#78350f;font-size:17px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.budget-header{display:flex;justify-content:space-between;align-items:center;background:#fff;padding:12px 16px;border-radius:10px;margin-bottom:16px;flex-wrap:wrap;gap:8px}
+.budget-amount{font-size:22px;font-weight:800;color:var(--success)}
+.budget-spent{font-size:16px;font-weight:600;color:var(--danger)}
+.budget-remaining{font-size:16px;font-weight:600;color:var(--primary)}
+.budget-items{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.budget-item{background:#fff;border:2px solid var(--border);border-radius:10px;padding:12px;cursor:pointer;transition:all .2s;display:flex;flex-direction:column;gap:6px}
+.budget-item:hover{border-color:var(--accent);transform:translateY(-2px)}
+.budget-item.selected{border-color:var(--success);background:#f0fdf4}
+.budget-item.disabled{opacity:.5;cursor:not-allowed}
+.budget-item-name{font-weight:600;font-size:14px;color:var(--text)}
+.budget-item-price{font-weight:700;color:var(--accent);font-size:15px}
+.budget-item-type{font-size:11px;color:var(--text-muted);font-style:italic}
+.budget-feedback{margin-top:16px;padding:12px;border-radius:10px;background:#fff;border:2px solid var(--border);font-size:14px;min-height:60px}
+.my-budget-wrap{background:linear-gradient(135deg,#eff6ff,#dbeafe);border:2px solid #93c5fd;border-radius:16px;padding:24px;margin:16px 0}
+.my-budget-wrap h4{color:#1e40af;font-size:18px;margin-bottom:16px;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px}
+.my-budget-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.my-budget-col{display:flex;flex-direction:column;gap:12px}
+.my-budget-card{background:#fff;border-radius:14px;padding:16px;box-shadow:0 4px 12px rgba(30,58,138,.08);border:2px solid transparent}
+.my-budget-title{font-size:16px;font-weight:700;text-align:center;margin-bottom:12px;padding:10px;border-radius:10px;color:#fff;display:flex;align-items:center;justify-content:center;gap:6px}
+.my-budget-title.income{background:linear-gradient(135deg,#16a34a,#15803d)}
+.my-budget-title.expense{background:linear-gradient(135deg,#9333ea,#7e22ce)}
+.my-budget-title.savings{background:linear-gradient(135deg,#2563eb,#1d4ed8)}
+.my-budget-title.total{background:linear-gradient(135deg,#f59e0b,#d97706)}
+.my-budget-title.balance{background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#78350f}
+.my-budget-title.deficit{background:linear-gradient(135deg,#dc2626,#b91c1c)}
+.my-budget-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.my-budget-row .emoji{font-size:20px;width:28px;text-align:center;flex-shrink:0}
+.my-budget-row .lbl{flex:1;font-size:13px;color:var(--text);min-width:0}
+.my-budget-row input[type="number"]{width:90px;padding:6px 10px;border:2px solid var(--border);border-radius:8px;font-size:13px;text-align:right;transition:border-color .2s;background:#fff;color:var(--text)}
+.my-budget-row input[type="number"]:focus{outline:none;border-color:var(--accent)}
+.my-budget-row .cur{font-size:12px;color:var(--text-muted)}
+.my-budget-total{display:flex;justify-content:space-between;align-items:center;background:var(--bg);padding:10px;border-radius:8px;font-weight:700;font-size:14px;margin-top:8px}
+.my-budget-total .val{color:var(--primary);font-size:16px}
+.my-budget-goal{width:100%;padding:8px;border:2px solid var(--border);border-radius:8px;font-size:13px;margin-bottom:10px;background:#fff;color:var(--text)}
+.my-budget-goal:focus{outline:none;border-color:var(--accent)}
+.my-budget-result{text-align:center;padding:12px;border-radius:10px;font-size:15px;font-weight:700;margin-top:10px}
+.my-budget-result.pos{background:#dcfce7;color:#166534;border:2px solid var(--success)}
+.my-budget-result.neg{background:#fee2e2;color:#991b1b;border:2px solid var(--danger)}
+.my-budget-result.neu{background:#fef3c7;color:#78350f;border:2px solid var(--warning)}
+.my-budget-desc{font-size:11px;color:var(--text-muted);margin-top:6px;text-align:center;font-style:italic}
+.my-budget-center{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+.my-budget-center-card{background:#fff;border-radius:50%;width:130px;height:130px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(30,58,138,.15);border:3px solid var(--accent)}
+.my-budget-center-card .big{font-size:36px}
+.my-budget-center-card .txt{font-weight:700;color:var(--primary);font-size:14px}
+.my-budget-check-btn{width:100%;padding:12px;background:var(--success);color:#fff;border:none;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;transition:all .2s;margin-top:8px}
+.my-budget-check-btn:hover{background:#15803d}
+@media(max-width:968px){
+.hero-unified{grid-template-columns:1fr}
+.hero-illustration{border-bottom:2px dashed var(--accent);min-height:300px}
+.info-blocks{grid-template-columns:1fr}
+.progress-widget{display:none!important}
+.situation-layout{grid-template-columns:1fr}
+.classify-grid{grid-template-columns:1fr}
+.income-branches{grid-template-columns:1fr}
+.question-highlight-text{font-size:17px}
+.question-highlight-icon{font-size:40px}
+.budget-items{grid-template-columns:1fr 1fr}
+.tf-container{grid-template-columns:1fr}
+.emp-details-grid{grid-template-columns:1fr}
+.my-budget-grid{grid-template-columns:1fr}
+.my-budget-center{order:-1}
+}
+@media(max-width:768px){
+.header{padding:16px;border-radius:0 0 12px 12px}
+.header h1{font-size:16px}
+.header-buttons .btn{padding:10px 12px;font-size:14px}
+.container{padding:20px 16px}
+.card{padding:20px}
+.navigation .btn{width:100%;min-width:100%}
+.task-options{grid-template-columns:1fr!important}
+.budget-items{grid-template-columns:1fr}
+.accordion-header{padding:14px 16px;font-size:14px}
+.accordion-body{padding:14px 16px}
+.classify-item{padding:10px;font-size:13px}
+.sort-slot{padding:10px}
+.sort-slot-number{width:32px;height:32px;font-size:14px}
+.tap-instruction{font-size:13px;padding:10px 12px}
+.emp-card-header{padding:14px 16px;gap:10px}
+.emp-card-icon{font-size:30px}
+.emp-card-title{font-size:15px}
+.emp-card-body{padding:0 16px 16px 16px}
+.my-budget-wrap{padding:16px}
+.my-budget-row input[type="number"]{width:80px}
+}
+@media(max-width:480px){
+.step-title{font-size:18px}
+.card h2{font-size:18px}
+.option{padding:12px;font-size:13px}
+.question-highlight{padding:16px}
+.question-highlight-text{font-size:16px}
+.accordion-header{padding:12px 14px;font-size:13px}
+.accordion-body{padding:12px 14px}
+.accordion-icon{font-size:16px}
+}
+</style>
+</head>
+<body>
+<div class="top-progress-bar"><div class="top-progress-fill" id="topProgressBar"></div></div>
+<div class="progress-widget" id="progressWidget" onclick="showProgressModal()" tabindex="0" role="button" aria-label="Прогрес">
+<div class="progress-widget-header"><span class="progress-widget-title">📊 Прогрес</span><span class="progress-widget-percentage" id="widgetPercentage">0%</span></div>
+<div style="font-size:10px;color:var(--text-muted);margin-bottom:6px">Виконано: <strong id="widgetTasks">0/12</strong></div>
+<div class="progress-widget-mini-map" id="widgetMiniMap"></div>
+</div>
+<div class="toast-container" id="toastContainer"></div>
+<header class="header">
+<div class="header-content">
+<h1 id="headerTitle">💰 § 31. Бюджет: доходи та витрати</h1>
+<div class="header-buttons">
+<button class="btn btn-secondary" onclick="goToMainPage()">← До змісту</button>
+<button class="btn btn-secondary" onclick="showProgressModal()">📊 Прогрес</button>
+<button class="btn btn-secondary" onclick="showHelpModal()">❓ Як працювати?</button>
+</div>
+</div>
+</header>
+<main class="container hidden" id="mainPage">
+<div class="hero-unified">
+<div class="hero-illustration">
+<div class="hero-illustration-title">💰 § 31. Бюджет: доходи та витрати</div>
+<img src="https://res.cloudinary.com/dmydvhkzr/image/upload/v1793042157/29-1_fqyklu.png" alt="Бюджет: доходи та витрати" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><rect fill=%22%23dbeafe%22 width=%22400%22 height=%22300%22/><text x=%22200%22 y=%22150%22 text-anchor=%22middle%22 font-size=%2260%22>💰📊</text><text x=%22200%22 y=%22200%22 text-anchor=%22middle%22 font-size=%2218%22 fill=%22%231e3a8a%22>Бюджет</text></svg>'">
+<p class="situation-caption">Гроші дають можливості, а відповідальний вибір допомагає використати їх розумно.</p>
+</div>
+<div class="hero-navigation">
+<h2>🧭 Навігація по кроках</h2>
+<div class="step-navigation" id="stepNavigation"></div>
+<button class="btn btn-primary mt-24" onclick="goToStep(1)" style="width:100%;font-size:17px;padding:14px">🚀 Розпочати параграф →</button>
+</div>
+</div>
+<div class="info-blocks">
+<div class="card" style="margin:0"><h3>🎯 У цьому параграфі ти:</h3>
+<ul class="feature-list">
+<li data-icon="💵">дізнаєшся, з яких джерел формуються доходи особи та сім'ї</li>
+<li data-icon="💼">ознайомишся з формами зайнятості та видами винагороди за працю</li>
+<li data-icon="📊">вчитимешся планувати особистий і сімейний бюджет</li>
+<li data-icon="🛒">опануєш правила культури споживання</li>
+<li data-icon="🎯">зможеш відповідально використовувати власні кошти</li>
+</ul></div>
+<div class="card" style="margin:0"><h3>📋 Що ти робитимеш?</h3>
+<ul class="feature-list">
+<li data-icon="✅">Плануватимеш витрати уявного літнього заробітку</li>
+<li data-icon="🌳">Класифікуватимеш джерела доходів</li>
+<li data-icon="💼">Аналізуватимеш форми зайнятості</li>
+<li data-icon="📊">Складатимеш бюджет родини Хоменків</li>
+<li data-icon="🧮">Складеш власний особистий бюджет на місяць</li>
+<li data-icon="🛒">Оцінюватимеш споживчий вибір</li>
+<li data-icon="⭐">Оціниш свої вміння</li>
+</ul></div>
+</div>
+<div class="tip-card">💡 <strong>Пам'ятай:</strong> Бюджет — це не обмеження, а інструмент для розумного використання доходів і контролю витрат.</div>
+</main>
+<main class="container hidden" id="step1Page">
+<div class="step-header"><h2 class="step-title">🎯 Крок 1. Стартове завдання</h2></div>
+<section class="card">
+<div class="question-highlight">
+<span class="question-highlight-icon"></span>
+<div class="question-highlight-text">Уявіть, що ви отримали 8000 грн за літню роботу. Як би ви розподілили ці гроші?</div>
+</div>
+<div class="situation-layout">
+<div class="situation-illustration-left">
+<img src="https://res.cloudinary.com/dmydvhkzr/image/upload/v1793042151/29-2_u8ngkd.png" alt="Літній заробіток" class="situation-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 200%22><rect fill=%22%23fef3c7%22 width=%22300%22 height=%22200%22/><text x=%22150%22 y=%22100%22 text-anchor=%22middle%22 font-size=%2250%22>💼💰</text><text x=%22150%22 y=%22150%22 text-anchor=%22middle%22 font-size=%2216%22 fill=%22%2378350f%22>8000 грн</text></svg>'">
+<p class="situation-caption">Відповідальний вибір — основа фінансової грамотності</p>
+</div>
+<div class="situation-content-right">
+<p style="margin:12px 0;color:var(--text-muted);font-style:italic">📌 <strong>Обери 3 варіанти зі списку:</strong></p>
+<div class="task-options" id="s1t1">
+<div class="option" data-correct="true" onclick="tog(this)" tabindex="0" role="checkbox"><div class="option-checkbox"></div><div class="option-text"><div class="option-label">👕 Придбати одяг</div></div></div>
+<div class="option" data-correct="true" onclick="tog(this)" tabindex="0" role="checkbox"><div class="option-checkbox"></div><div class="option-text"><div class="option-label">📚 Оплатити курс англійської мови, програмування або навчання в автошколі</div></div></div>
+<div class="option" data-correct="true" onclick="tog(this)" tabindex="0" role="checkbox"><div class="option-checkbox"></div><div class="option-text"><div class="option-label">🏦 Залишити частину грошей у резерві</div></div></div>
+<div class="option" data-correct="true" onclick="tog(this)" tabindex="0" role="checkbox"><div class="option-checkbox"></div><div class="option-text"><div class="option-label">🎤 Піти на концерт улюбленого виконавця</div></div></div>
+<div class="option" data-correct="true" onclick="tog(this)" tabindex="0" role="checkbox"><div class="option-checkbox"></div><div class="option-text"><div class="option-label">👨‍👩‍👧 Допомогти родині у важливій справі</div></div></div>
+</div>
+<div id="s1t1f" class="feedback" style="display:none"></div>
+<div class="navigation">
+<button class="btn btn-secondary" onclick="goToMainPage()">← До змісту</button>
+<button class="btn btn-primary" onclick="chkStartTask()">✓ Перевірити</button>
+<button class="btn btn-success" onclick="goToStep(2)">Далі: Крок 2 →</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<main class="container hidden" id="step2Page">
+<div class="step-header"><div class="step-header-top"><h2 class="step-title">💵 Крок 2. Джерела доходів особи та сім'ї</h2><span class="step-badge">4 завдання</span></div></div>
+<section class="card" id="s2Theory">
+<h2>📖 Теоретичний блок</h2>
+<div class="theory-compact" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe);border-color:#93c5fd">
+<h4 style="color:#1e40af">💵 Що таке доходи?</h4>
+<p><strong>Доходи</strong> — це грошові або матеріальні надходження, які людина чи сім'я отримує протягом певного часу. Усі доходи членів сім'ї разом утворюють її <strong>сукупний дохід</strong>.</p>
+<p><strong>Витрати</strong> — це кошти, які людина або сім'я спрямовує на придбання товарів, оплату послуг та інші потреби.</p>
+<p><strong>Бюджет</strong> — це план доходів і витрат на певний період (тиждень, місяць, квартал, рік).</p>
+</div>
+<div class="income-tree">
+<h4>🌳 Джерела доходів сім'ї (натисни на гілку, щоб дізнатися більше)</h4>
+<div class="income-root">💰 ДОХОДИ СІМ'Ї</div>
+<div class="income-branches">
+<div class="income-branch branch-labor" onclick="showIncome('labor')" tabindex="0" role="button" aria-label="Трудові надходження" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
+<h5>💼 Трудові надходження</h5>
+</div>
+<div class="income-branch branch-property" onclick="showIncome('property')" tabindex="0" role="button" aria-label="Доходи від власності" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
+<h5>🏠 Доходи від власності</h5>
+</div>
+<div class="income-branch branch-social" onclick="showIncome('social')" tabindex="0" role="button" aria-label="Соціальні доходи" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
+<h5>🤝 Соціальні доходи</h5>
+</div>
+<div class="income-branch branch-other" onclick="showIncome('other')" tabindex="0" role="button" aria-label="Інші доходи" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
+<h5>🎁 Інші доходи</h5>
+</div>
+</div>
+<div class="income-details" id="incomeDetails">
+<p style="color:var(--text-muted);font-style:italic;text-align:center">👆 Натисни на будь-яку гілку, щоб побачити детальну інформацію</p>
+</div>
+</div>
+<div class="key-point">⚠️ <strong>Важливо!</strong> Позика або кредит — це НЕ дохід, а залучені кошти, які потрібно повернути.</div>
+<div class="accordion-item">
+<div class="accordion-header" onclick="toggleAccordion(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><span>📖 Приклад: доходи родини Хоменків (4 особи)</span><span class="accordion-icon">▼</span></div>
+<div class="accordion-content"><div class="accordion-body">
+<p style="margin-bottom:10px"><strong>👨‍👩‍👧‍👦 Ситуація:</strong> Родина із чотирьох осіб — чоловік, дружина, їхній син і батько дружини — протягом місяця отримала такі надходження:</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:12px">
+<div style="background:linear-gradient(135deg,#dcfce7,#bbf7d0);padding:12px;border-radius:10px"><strong style="color:#166534">💼 Трудові</strong><br><span style="font-size:13px">• Заробітна плата чоловіка<br>• Оплата за фріланс дружини<br>• Премія чоловіка</span></div>
+<div style="background:linear-gradient(135deg,#dbeafe,#bfdbfe);padding:12px;border-radius:10px"><strong style="color:#1e40af">🏠 Від власності</strong><br><span style="font-size:13px">• Відсотки за депозитом<br>• Орендна плата за квартиру</span></div>
+<div style="background:linear-gradient(135deg,#fef3c7,#fde68a);padding:12px;border-radius:10px"><strong style="color:#78350f">🤝 Соціальні</strong><br><span style="font-size:13px">• Стипендія сина<br>• Пенсія дідуся</span></div>
+<div style="background:linear-gradient(135deg,#f3e8ff,#ede9fe);padding:12px;border-radius:10px"><strong style="color:#6d28d9">🎁 Інші</strong><br><span style="font-size:13px">• Подарунок до дня народження<br>• Виграш у лотерею</span></div>
+</div>
+</div></div></div>
+<div class="navigation"><button class="btn btn-secondary" onclick="goToMainPage()">← До змісту</button><button class="btn btn-primary" onclick="showS2('s2t1')">Далі: Завдання 1 →</button></div>
+</section>
+<section class="card hidden" id="s2t1">
+<h2>🔗 Завдання 1. Розподіли доходи родини Хоменків</h2>
+<div class="feedback feedback-warning mb-24">
+<strong>📌 Інструкція:</strong><br>
+1️⃣ Розподіли надходження на <strong>трудові</strong> й <strong>нетрудові</strong>.<br>
+2️⃣ Натисни на картку → вона підсвітиться жовтим → натисни на потрібну категорію.
+</div>
+<div class="classify-grid">
+<div class="classify-col labor" id="laborCol" data-category="labor" onclick="classifyTapTarget(this)">
+<h4>💼 ТРУДОВІ</h4>
+<div id="laborDrop"></div>
+</div>
+<div class="classify-col nonlabor" id="nonlaborCol" data-category="nonlabor" onclick="classifyTapTarget(this)">
+<h4>💎 НЕТРУДОВІ</h4>
+<div id="nonlaborDrop"></div>
+</div>
+</div>
+<div style="background:#fff;border:2px solid var(--border);border-radius:12px;padding:16px;margin-top:16px">
+<h4 style="color:var(--primary);margin-bottom:12px">📋 Доходи родини Хоменків (натисни, щоб обрати)</h4>
+<div id="classifyBank"></div>
+</div>
+<div style="text-align:center;margin-top:12px"><button class="dnd-reset-btn" onclick="resetClassify()">🔄 Почати спочатку</button></div>
+<div id="s2t1f" class="feedback" style="display:none"></div>
+<div class="navigation"><button class="btn btn-secondary" onclick="showS2('s2Theory')">← Назад</button><button class="btn btn-primary" onclick="chkClassify()">✓ Перевірити</button><button class="btn btn-success" onclick="showS2('s2t1b')">Далі →</button></div>
+</section>
+<section class="card hidden" id="s2t1b">
+<h2>🔗 Завдання 1б. Розподіли нетрудові доходи на 3 групи</h2>
+<div class="feedback feedback-warning mb-24">
+<strong>📌 Інструкція:</strong> Розподіли нетрудові доходи родини Хоменків на три групи: <strong>доходи від власності</strong>, <strong>соціальні доходи</strong> та <strong>інші доходи</strong>.
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:16px 0">
+<div style="background:linear-gradient(135deg,#dbeafe,#bfdbfe);border:2px solid #93c5fd;border-radius:12px;padding:14px;min-height:180px" data-group="property" onclick="classifyGroupTap(this)">
+<h4 style="color:#1e40af;margin-bottom:10px;font-size:14px;text-align:center">🏠 ВІД ВЛАСНОСТІ</h4>
+<div id="propertyDrop"></div>
+</div>
+<div style="background:linear-gradient(135deg,#fef3c7,#fde68a);border:2px solid #fbbf24;border-radius:12px;padding:14px;min-height:180px" data-group="social" onclick="classifyGroupTap(this)">
+<h4 style="color:#78350f;margin-bottom:10px;font-size:14px;text-align:center">🤝 СОЦІАЛЬНІ</h4>
+<div id="socialDrop"></div>
+</div>
+<div style="background:linear-gradient(135deg,#f3e8ff,#ede9fe);border:2px solid #c4b5fd;border-radius:12px;padding:14px;min-height:180px" data-group="other" onclick="classifyGroupTap(this)">
+<h4 style="color:#6d28d9;margin-bottom:10px;font-size:14px;text-align:center">🎁 ІНШІ</h4>
+<div id="otherDrop"></div>
+</div>
+</div>
+<div style="background:#fff;border:2px solid var(--border);border-radius:12px;padding:16px;margin-top:16px">
+<h4 style="color:var(--primary);margin-bottom:12px">📋 Нетрудові доходи (натисни, щоб обрати)</h4>
+<div id="groupBank"></div>
+</div>
+<div style="text-align:center;margin-top:12px"><button class="dnd-reset-btn" onclick="resetGroupClassify()">🔄 Почати спочатку</button></div>
+<div id="s2t1bf" class="feedback" style="display:none"></div>
+<div class="navigation"><button class="btn btn-secondary" onclick="showS2('s2t1')">← Назад</button><button class="btn btn-primary" onclick="chkGroupClassify()">✓ Перевірити</button><button class="btn btn-success" onclick="showS2('s2t2')">Далі →</button></div>
+</section>
+<section class="card hidden" id="s2t2">
+<h2>⚠️ Завдання 2. Позика — це дохід?</h2>
+<div class="feedback feedback-warning mb-24"><strong>📌 Твердження:</strong> «Коли банк схвалив кредит на 20 000 грн, доходи родини зросли на цю суму».</div>
+<div class="tf-container" id="s2t2q">
+<div class="tf-card" onclick="tfSel(this,'s2t2q','true')" tabindex="0" role="button">
+<div class="tf-card-icon">✅</div>
+<div class="tf-card-title">Так, це дохід</div>
+<div class="tf-card-desc">Кредит — це гроші, які можна витрачати</div>
+</div>
+<div class="tf-card" onclick="tfSel(this,'s2t2q','false')" tabindex="0" role="button">
+<div class="tf-card-icon">❌</div>
+<div class="tf-card-title">Ні, це не дохід</div>
+<div class="tf-card-desc">Кредит — це залучені кошти, які треба повернути</div>
+</div>
+</div>
+<div id="s2t2f" class="feedback" style="display:none;margin-top:12px"></div>
+<div class="navigation"><button class="btn btn-secondary" onclick="showS2('s2t1b')">← Назад</button><button class="btn btn-primary" onclick="chkTFLoan()">✓ Перевірити</button><button class="btn btn-success" onclick="showS2('s2t3')">Далі →</button></div>
+</section>
+<section class="card hidden" id="s2t3">
+<h2>📊 Завдання 3. Регулярні чи разові доходи?</h2>
+<div class="feedback feedback-warning mb-24">
+<strong>📌 Інструкція:</strong><br>
+Розподіли надходження на <strong>регулярні</strong> і <strong>разові</strong>. На які доходи родина може розраховувати під час планування щомісячного бюджету?
+</div>
+<div class="accordion-item">
+<div class="accordion-header" onclick="toggleAccordion(this)"><span>💼 Заробітна плата чоловіка</span><span class="accordion-icon">▼</span></div>
+<div class="accordion-content"><div class="accordion-body">
+<div class="tf-container" id="s2t3q1">
+<div class="tf-card" onclick="tfSel(this,'s2t3q1','regular')" tabindex="0" role="button"><div class="tf-card-icon">📅</div><div class="tf-card-title">Регулярний</div></div>
+<div class="tf-card" onclick="tfSel(this,'s2t3q1','once')" tabindex="0" role="button"><div class="tf-card-icon">🎯</div><div class="tf-card-title">Разовий</div></div>
+</div>
+</div></div></div>
+<div class="accordion-item">
+<div class="accordion-header" onclick="toggleAccordion(this)"><span>🎁 Подарунок до дня народження</span><span class="accordion-icon">▼</span></div>
+<div class="accordion-content"><div class="accordion-body">
+<div class="tf-container" id="s2t3q2">
+<div class="tf-card" onclick="tfSel(this,'s2t3q2','regular')" tabindex="0" role="button"><div class="tf-card-icon">📅</div><div class="tf-card-title">Регулярний</div></div>
+<div class="tf-card" onclick="tfSel(this,'s2t3q2','once')" tabindex="0" role="button"><div class="tf-card-icon">🎯</div><div class="tf-card-title">Разовий</div></div>
+</div>
+</div></div></div>
+<div class="accordion-item">
+<div class="accordion-header" onclick="toggleAccordion(this)"><span>🏦 Відсотки за депозитом</span><span class="accordion-icon">▼</span></div>
+<div class="accordion-content"><div class="accordion-body">
+<div class="tf-container" id="s2t3q3">
+<div class="tf-card" onclick="tfSel(this,'s2t3q3','regular')" tabindex="0" role="button"><div class="tf-card-icon">📅</div><div class="tf-card-title">Регулярний</div></div>
+<div class="tf-card" onclick="tfSel(this,'s2t3q3','once')" tabindex="0" role="button"><div class="tf-card-icon">🎯</div><div class="tf-card-title">Разовий</div></div>
+</div>
+</div></div></div>
+<div class="accordion-item">
+<div class="accordion-header" onclick="toggleAccordion(this)"><span>🎰 Виграш у лотерею</span><span class="accordion-icon">▼</span></div>
+<div class="accordion-content"><div class="accordion-body">
+<div class="tf-container" id="s2t3q4">
+<div class="tf-card" onclick="tfSel(this,'s2t3q4','regular')" tabindex="0" role="button"><div class="tf-card-icon">📅</div><div class="tf-card-title">Регулярний</div></div>
+<div class="tf-card" onclick="tfSel(this,'s2t3q4','once')" tabindex="0" role="button"><div class="tf-card-icon">🎯</div><div class="tf-card-title">Разовий</div></div>
+</div>
+</div></div></div>
+<div id="s2t3f" class="feedback" style="display:none"></div>
+<div class="navigation"><button class="btn btn-secondary" onclick="showS2('s2t2')">← Назад</button><button class="btn btn-primary" onclick="chkAllTF('s2t3',{s2t3q1:'regular',s2t3q2:'once',s2t3q3:'regular',s2t3q4:'once'},'step2_task3')">✓ Завершити</button><button class="btn btn-success" onclick="goToStep(3)">Далі: Крок 3 →</button></div>
+</section>
+</main>
+<main class="container hidden" id="step3Page">
+<div class="step-header"><div class="step-header-top"><h2 class="step-title">💼 Крок 3. Форми зайнятості та винагорода</h2><span class="step-badge">3 завдання</span></div></div>
+<section class="card" id="s3Theory">
+<h2>📖 Теоретичний блок</h2>
+<div class="theory-compact" style="background:linear-gradient(135deg,#dcfce7,#bbf7d0);border-color:#86efac">
+<h4 style="color:#166534">💼 Три форми зайнятості</h4>
+<p><strong>Робота за наймом</strong> — праця за трудовим договором із отриманням заробітної плати.</p>
+<p><strong>Самозайнятість</strong> — виконання робіт або надання послуг за винагороду.</p>
+<p><strong>Підприємництво</strong> — організація власної справи для отримання прибутку.</p>
+</div>
+<h3 style="margin:24px 0 16px;color:var(--primary)">📋 Форми зайнятості (натисни на картку, щоб розгорнути)</h3>
+<div class="employment-accordion">
+<div class="emp-card" style="--emp-color:#16a34a" data-type="employed">
+<div class="emp-card-header" onclick="toggleEmpCard(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleEmpCard(this);}">
+<div class="emp-card-icon">🏢</div>
+<div class="emp-card-title-wrap">
+<div class="emp-card-title">Робота за наймом</div>
+<div class="emp-card-subtitle">Трудовий договір</div>
+</div>
+<div class="emp-card-arrow">▼</div>
+</div>
+<div class="emp-card-content"><div class="emp-card-body"><div class="emp-card-body-inner">
+<div class="emp-details-grid">
+<div><strong>👔 Хто організовує?</strong>Роботодавець визначає завдання, умови та графік роботи</div>
+<div><strong>💳 Хто оплачує?</strong>Роботодавець виплачує заробітну плату</div>
+<div><strong>💰 Винагорода:</strong>Заробітна плата — фіксована сума за виконану роботу відповідно до умов трудового договору</div>
+<div><strong>⚠️ Хто несе ризик?</strong>Переважно роботодавець</div>
+</div>
+<div class="emp-examples">
+<strong>📌 Приклади професій:</strong>
+<ul>
+<li>Вчитель у школі</li>
+<li>Менеджер у компанії</li>
+<li>Лікар у лікарні</li>
+<li>Касир у магазині</li>
+</ul>
+</div>
+</div></div></div>
+</div>
+<div class="emp-card" style="--emp-color:#2563eb" data-type="self">
+<div class="emp-card-header" onclick="toggleEmpCard(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleEmpCard(this);}">
+<div class="emp-card-icon">💻</div>
+<div class="emp-card-title-wrap">
+<div class="emp-card-title">Самозайнятість</div>
+<div class="emp-card-subtitle">Фріланс, репетиторство</div>
+</div>
+<div class="emp-card-arrow">▼</div>
+</div>
+<div class="emp-card-content"><div class="emp-card-body"><div class="emp-card-body-inner">
+<div class="emp-details-grid">
+<div><strong>👔 Хто організовує?</strong>Людина сама планує свою діяльність, обирає завдання і клієнтів</div>
+<div><strong>💳 Хто оплачує?</strong>Клієнти (замовники) оплачують виконану роботу або послуги</div>
+<div><strong>💰 Винагорода:</strong>Дохід від замовлень — сума, яку людина отримує за виконання і надання послуг</div>
+<div><strong>⚠️ Хто несе ризик?</strong>Сама людина</div>
+</div>
+<div class="emp-examples">
+<strong>📌 Приклади професій:</strong>
+<ul>
+<li>Фрілансер-дизайнер</li>
+<li>Репетитор</li>
+<li>Перукар на дому</li>
+<li>Фотограф</li>
+</ul>
+</div>
+</div></div></div>
+</div>
+<div class="emp-card" style="--emp-color:#f59e0b" data-type="business">
+<div class="emp-card-header" onclick="toggleEmpCard(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleEmpCard(this);}">
+<div class="emp-card-icon">🏪</div>
+<div class="emp-card-title-wrap">
+<div class="emp-card-title">Підприємництво</div>
+<div class="emp-card-subtitle">Власна справа</div>
+</div>
+<div class="emp-card-arrow">▼</div>
+</div>
+<div class="emp-card-content"><div class="emp-card-body"><div class="emp-card-body-inner">
+<div class="emp-details-grid">
+<div><strong>👔 Хто організовує?</strong>Підприємець організовує власну справу, приймає рішення і несе ризики</div>
+<div><strong>💳 Хто оплачує?</strong>Покупці (клієнти) купують товари або послуги. Гроші надходять від продажу</div>
+<div><strong>💰 Винагорода:</strong>Прибуток — різниця між доходами від продажу й витратами на ведення справи</div>
+<div><strong>⚠️ Хто несе ризик?</strong>Підприємець</div>
+</div>
+<div class="emp-examples">
+<strong>📌 Приклади професій:</strong>
+<ul>
+<li>Власник кав'ярні</li>
+<li>ФОП з інтернет-магазином</li>
+<li>Засновник стартапу</li>
+<li>Фермер</li>
+</ul>
+</div>
+</div></div></div>
+</div>
+</div>
+<div class="key-point">💡 <strong>Пам'ятай:</strong> Розмір винагороди залежить від виконаної роботи, її результатів, кількості замовлень, доходів і витрат.</div>
+<div class="navigation"><button class="btn btn-secondary" onclick="goToMainPage()">← До змісту</button><button class="btn btn-primary" onclick="showS3('s3t1')">Далі: Завдання 1 →</button></div>
+</section>
+<section class="card hidden" id="s3t1">
+<h2>🎯 Завдання 1. Аналіз ситуацій</h2>
+<div class="feedback feedback-warning mb-24">
+<strong>📌 Ситуація:</strong> Максим, Богдан і Софія закінчують школу й обмірковують свій професійний шлях. Розгляньте їхні очікування та доберіть для кожного найбільш відповідну форму зайнятості.
+</div>
+<div class="accordion-item">
+<div class="accordion-header" onclick="toggleAccordion(this)"><span>👩 <strong>Софія хоче:</strong> створити власну справу; ухвалювати самостійні рішення; організовувати роботу інших людей; отримувати великий прибуток і не боїться заради цього ризикувати</span><span class="accordion-icon">▼</span></div>
+<div class="accordion-content"><div class="accordion-body">
+<div class="task-options" id="s3t1q1">
+<div class="option" data-correct="false" onclick="selRadio(this,'s3t1q1')" tabindex="0" role="radio"><div class="option-radio"></div><div class="option-text"><div class="option-label">🏢 Робота за наймом</div></div></div>
+<div class="option" data-correct="false" onclick="selRadio(this,'s3t1q1')" tabindex="0" role="radio"><div class="option-radio"></div><div class="option-text"><div class="option-label">💻 Самозайнятість</div></div></div>
+<div class="option" data-correct="true" onclick="selRadio(this,'s3t1q1')" tabindex="0" role="radio"><div class="option-radio"></div><div class="option-text"><div class="option-label">🏪 Підприємництво</div></div></div>
+</div>
+</div></div></div>
+<div class="accordion-item">
+<div class="accordion-header" onclick="toggleAccordion(this)"><span>👨 <strong>Богдан хоче:</strong> самостійно планувати свій час; працювати над різними проєктами; сам знаходити замовників; отримувати оплату за виконану роботу</span><span class="accordion-icon">▼</span></div>
+<div class="accordion-content"><div class="accordion-body">
+<div class="task-options" id="s3t1q2">
+<div class="option" data-correct="false" onclick="selRadio(this,'s3t1q2')" tabindex="0" role="radio"><div class="option-radio"></div><div class="option-text"><div class="option-label">🏢 Робота за наймом</div></div></div>
+<div class="option" data-correct="true" onclick="selRadio(this,'s3t1q2')" tabindex="0" role="radio"><div class="option-radio"></div><div class="option-text"><div class="option-label">💻 Самозайнятість</div></div></div>
+<div class="option" data-correct="false" onclick="selRadio(this,'s3t1q2')" tabindex="0" role="radio"><div class="option-radio"></div><div class="option-text"><div class="option-label">🏪 Підприємництво</div></div></div>
+</div>
+</div></div></div>
+<div class="accordion-item">
+<div class="accordion-header" onclick="toggleAccordion(this)"><span>👦 <strong>Максим хоче:</strong> мати стабільний дохід; працювати за чітким графіком; виконувати визначені завдання; уникати великих фінансових ризиків</span><span class="accordion-icon">▼</span></div>
+<div class="accordion-content"><div class="accordion-body">
+<div class="task-options" id="s3t1q3">
+<div class="option" data-correct="true" onclick="selRadio(this,'s3t1q3')" tabindex="0" role="radio"><div class="option-radio"></div><div class="option-text"><div class="option-label">🏢 Робота за наймом</div></div></div>
+<div class="option" data-correct="false" onclick="selRadio(this,'s3t1q3')" tabindex="0" role="radio"><div class="option-radio"></div><div class="option-text"><div class="option-label">💻 Самозайнятість</div></div></div>
+<div class="option" data-correct="false" onclick="selRadio(this,'s3t1q3')" tabindex="0" role="radio"><div class="option-radio"></div><div class="option-text"><div class="option-label">🏪 Підприємництво</div></div></div>
+</div>
+</div></div></div>
+<div id="s3t1f" class="feedback" style="display:none"></div>
+<div class="navigation"><button class="btn btn-secondary" onclick="showS3('s3Theory')">← Назад</button><button class="btn btn-primary" onclick="chkAllRadio('s3t1',{s3t1q1:'🏪 Підприємництво',s3t1q2:'💻 Самозайнятість',s3t1q3:'🏢 Робота за наймом'},'step3_task1')">✓ Завершити</button><button class="btn btn-success" onclick="showS3('s3t2')">Далі →</button></div>
+</section>
+<section class="card hidden" id="s3t2">
+<h2>🔄 Завдання 2. Зіставлення: форма → винагорода</h2>
+<div class="feedback feedback-warning mb-24"><strong>📌 Інструкція:</strong> Для кожної форми зайнятості обери відповідний вид винагороди.</div>
+<div style="display:flex;flex-direction:column;gap:12px;margin:16px 0" id="matchingContainer">
+<div style="display:grid;grid-template-columns:1fr 40px 1.5fr;gap:12px;align-items:center">
+<div style="background:var(--bg);padding:12px;border-radius:8px;font-weight:600;border:2px solid var(--border)">🏢 Робота за наймом</div>
+<div style="text-align:center;font-size:20px;color:var(--text-muted)">→</div>
+<select class="matching-select" id="m31" style="width:100%;padding:12px;border:2px solid var(--border);border-radius:8px;font-size:15px;background:#fff;cursor:pointer">
+<option value="">Обери...</option>
+<option value="b">💰 Дохід від замовлень</option>
+<option value="a">💵 Заробітна плата</option>
+<option value="c">💎 Прибуток</option>
+</select>
+</div>
+<div style="display:grid;grid-template-columns:1fr 40px 1.5fr;gap:12px;align-items:center">
+<div style="background:var(--bg);padding:12px;border-radius:8px;font-weight:600;border:2px solid var(--border)">💻 Самозайнятість</div>
+<div style="text-align:center;font-size:20px;color:var(--text-muted)">→</div>
+<select class="matching-select" id="m32" style="width:100%;padding:12px;border:2px solid var(--border);border-radius:8px;font-size:15px;background:#fff;cursor:pointer">
+<option value="">Обери...</option>
+<option value="b">💰 Дохід від замовлень</option>
+<option value="a">💵 Заробітна плата</option>
+<option value="c">💎 Прибуток</option>
+</select>
+</div>
+<div style="display:grid;grid-template-columns:1fr 40px 1.5fr;gap:12px;align-items:center">
+<div style="background:var(--bg);padding:12px;border-radius:8px;font-weight:600;border:2px solid var(--border)">🏪 Підприємництво</div>
+<div style="text-align:center;font-size:20px;color:var(--text-muted)">→</div>
+<select class="matching-select" id="m33" style="width:100%;padding:12px;border:2px solid var(--border);border-radius:8px;font-size:15px;background:#fff;cursor:pointer">
+<option value="">Обери...</option>
+<option value="b">💰 Дохід від замовлень</option>
+<option value="a">💵 Заробітна плата</option>
+<option value="c">💎 Прибуток</option>
+</select>
+</div>
+</div>
+<div id="s3t2f" class="feedback" style="display:none"></div>
+<div class="navigation"><button class="btn btn-secondary" onclick="showS3('s3t1')">← Назад</button><button class="btn btn-primary" onclick="chkMatching('s3t2',{m31:'a',m32:'b',m33:'c'},'step3_task2')">✓ Перевірити</button><button class="btn btn-success" onclick="showS3('s3t3')">Далі →</button></div>
+</section>
+<section class="card hidden" id="s3t3">
+<h2>✅❌ Завдання 3. Правда чи неправда?</h2>
+<div class="feedback feedback-warning mb-24"><strong>📌 Інструкція:</strong> Прочитай твердження та обери — правда це чи неправда.</div>
+<div class="accordion-item">
+<div class="accordion-header" onclick="toggleAccordion(this)"><span>📋 У підприємця фінансовий ризик несе роботодавець</span><span class="accordion-icon">▼</span></div>
+<div class="accordion-content"><div class="accordion-body">
+<div class="tf-container" id="s3t3q1">
+<div class="tf-card" onclick="tfSel(this,'s3t3q1','true')" tabindex="0" role="button"><div class="tf-card-icon">✅</div><div class="tf-card-title">Правда</div></div>
+<div class="tf-card" onclick="tfSel(this,'s3t3q1','false')" tabindex="0" role="button"><div class="tf-card-icon">❌</div><div class="tf-card-title">Неправда</div></div>
+</div>
+</div></div></div>
+<div class="accordion-item">
+<div class="accordion-header" onclick="toggleAccordion(this)"><span>📋 Прибуток — це різниця між доходами від продажу й витратами на ведення справи</span><span class="accordion-icon">▼</span></div>
+<div class="accordion-content"><div class="accordion-body">
+<div class="tf-container" id="s3t3q2">
+<div class="tf-card" onclick="tfSel(this,'s3t3q2','true')" tabindex="0" role="button"><div class="tf-card-icon">✅</div><div class="tf-card-title">Правда</div></div>
+<div class="tf-card" onclick="tfSel(this,'s3t3q2','false')" tabindex="0" role="button"><div class="tf-card-icon">❌</div><div class="tf-card-title">Неправда</div></div>
+</div>
+</div></div></div>
+<div class="accordion-item">
+<div class="accordion-header" onclick="toggleAccordion(this)"><span>📋 Фрілансер — це приклад роботи за наймом</span><span class="accordion-icon">▼</span></div>
+<div class="accordion-content"><div class="accordion-body">
+<div class="tf-container" id="s3t3q3">
+<div class="tf-card" onclick="tfSel(this,'s3t3q3','true')" tabindex="0" role="button"><div class="tf-card-icon">✅</div><div class="tf-card-title">Правда</div></div>
+<div class="tf-card" onclick="tfSel(this,'s3t3q3','false')" tabindex="0" role="button"><div class="tf-card-icon">❌</div><div class="tf-card-title">Неправда</div></div>
+</div>
+</div></div></div>
+<div id="s3t3f" class="feedback" style="display:none"></div>
+<div class="navigation"><button class="btn btn-secondary" onclick="showS3('s3t2')">← Назад</button><button class="btn btn-primary" onclick="chkAllTF('s3t3',{s3t3q1:'false',s3t3q2:'true',s3t3q3:'false'},'step3_task3')">✓ Завершити</button><button class="btn btn-success" onclick="goToStep(4)">Далі: Крок 4 →</button></div>
+</section>
+</main>
+<main class="container hidden" id="step4Page">
+<div class="step-header"><div class="step-header-top"><h2 class="step-title">📊 Крок 4. Як планувати бюджет</h2><span class="step-badge">3 завдання</span></div></div>
+<section class="card" id="s4Theory">
+<h2>📖 Теоретичний блок</h2>
+<div class="theory-compact" style="background:linear-gradient(135deg,#fef3c7,#fde68a);border-color:#fbbf24">
+<h4 style="color:#78350f">📊 4 кроки складання бюджету</h4>
+<p>Щоб скласти бюджет, потрібно зафіксувати доходи й витрати, згрупувати їх і визначити пріоритети. Регулярно переглядай свій бюджет: <strong>плануй → витрачай → перевіряй → коригуй</strong>.</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:20px 0">
+<div style="background:linear-gradient(135deg,#dcfce7,#bbf7d0);padding:16px;border-radius:12px;border-left:4px solid var(--success)">
+<div style="font-size:28px">1️⃣</div>
+<div style="font-weight:700;color:#166534;margin:6px 0">ВИЗНАЧ ДОХОДИ</div>
+<div style="font-size:13px;color:var(--text)">Запиши всі джерела доходів за вибраний період</div>
+</div>
+<div style="background:linear-gradient(135deg,#dbeafe,#bfdbfe);padding:16px;border-radius:12px;border-left:4px solid var(--accent)">
+<div style="font-size:28px">2️⃣</div>
+<div style="font-weight:700;color:#1e40af;margin:6px 0">ЗАПЛАНУЙ ВИТРАТИ</div>
+<div style="font-size:13px;color:var(--text)">Оціни, скільки потрібно на обов'язкові, бажані й непередбачені</div>
+</div>
+<div style="background:linear-gradient(135deg,#fef3c7,#fde68a);padding:16px;border-radius:12px;border-left:4px solid var(--warning)">
+<div style="font-size:28px">3️⃣</div>
+<div style="font-weight:700;color:#78350f;margin:6px 0">ПОРІВНЯЙ</div>
+<div style="font-size:13px;color:var(--text)">Доходи > витрат = резерв; = баланс; < витрат = дефіцит</div>
+</div>
+<div style="background:linear-gradient(135deg,#f3e8ff,#ede9fe);padding:16px;border-radius:12px;border-left:4px solid #a855f7">
+<div style="font-size:28px">4️⃣</div>
+<div style="font-weight:700;color:#6d28d9;margin:6px 0">ПРИЙМИ РІШЕННЯ</div>
+<div style="font-size:13px;color:var(--text)">Скороти зайве, створи резерв (не менше 10%)</div>
+</div>
+</div>
+<div class="key-point">💡 <strong>Пам'ятай:</strong> Якщо витрати менші за доходи — утворюється залишок (резерв). Якщо більші — дефіцит.</div>
+<div class="navigation"><button class="btn btn-secondary" onclick="goToMainPage()">← До змісту</button><button class="btn btn-primary" onclick="showS4('s4t1')">Далі: Завдання 1 →</button></div>
+</section>
+<section class="card hidden" id="s4t1">
+<h2>📊 Завдання 1. Симулятор бюджету родини Хоменків</h2>
+<div class="budget-sim">
+<h4>🎮 Ситуація: Розглянь приклад місячного бюджету родини Хоменків із чотирьох осіб.</h4>
+<div class="budget-header">
+<div><span style="font-size:13px;color:var(--text-muted)">💵 Доходи:</span> <span class="budget-amount">67 300 грн</span></div>
+<div><span style="font-size:13px;color:var(--text-muted)">💸 Витрачено:</span> <span class="budget-spent" id="budgetSpent">0 грн</span></div>
+<div><span style="font-size:13px;color:var(--text-muted)">🏦 Залишок:</span> <span class="budget-remaining" id="budgetRemaining">67 300 грн</span></div>
+</div>
+<div class="tap-instruction" style="margin-bottom:16px">
+<div class="tap-instruction-icon">💡</div>
+<div><strong>Критерії раціонального бюджету:</strong><br>
+✅ Покрити обов'язкові витрати (житло, харчування, транспорт)<br>
+✅ Передбачити навчання та здоров'я<br>
+✅ Відкласти заощадження (не менше 10%)<br>
+✅ Залишити кошти на відпочинок та подарунки<br>
+📌 <em>Уникай дефіциту — витрати не повинні перевищувати доходи!</em></div>
+</div>
+<div class="budget-items" id="budgetItems"></div>
+<div class="budget-feedback" id="budgetFeedback"><strong style="color:var(--primary)">💡 Порада:</strong> Обери витрати, натискаючи на картки. Потім натисни «Перевірити».</div>
+</div>
+<div id="s4t1f" class="feedback" style="display:none"></div>
+<div class="navigation"><button class="btn btn-secondary" onclick="showS4('s4Theory')">← Назад</button><button class="btn btn-primary" onclick="chkBudget()">✓ Перевірити</button><button class="btn btn-success" onclick="showS4('s4t2')">Далі →</button></div>
+</section>
+<section class="card hidden" id="s4t2">
+<h2>🧮 Завдання 2. Мій особистий бюджет на місяць</h2>
+<div class="feedback feedback-warning mb-24">
+<strong>📌 Інструкція:</strong><br>
+1️⃣ Заповни свої реальні (або уявні) доходи та витрати.<br>
+2️⃣ Вкажи ціль заощаджень і суму, яку хочеш відкладати.<br>
+3️⃣ Переглянь результат: чи є в тебе залишок, чи дефіцит?<br>
+4️⃣ Натисни «✓ Перевірити мій бюджет», коли будеш готовий(а).
+</div>
+<div class="my-budget-wrap">
+<h4>🧮 Складіть особистий бюджет на місяць</h4>
+<div class="my-budget-grid">
+<div class="my-budget-col">
+<div class="my-budget-card">
+<div class="my-budget-title income">💚 МОЇ ДОХОДИ</div>
+<div class="my-budget-row"><span class="emoji">👛</span><span class="lbl">Кишенькові гроші</span><input type="number" class="mb-income" data-name="кишенькові" min="0" value="0"><span class="cur">грн</span></div>
+<div class="my-budget-row"><span class="emoji">🎁</span><span class="lbl">Подарунки, грошова допомога</span><input type="number" class="mb-income" data-name="подарунки" min="0" value="0"><span class="cur">грн</span></div>
+<div class="my-budget-row"><span class="emoji">💼</span><span class="lbl">Підробіток, заробіток</span><input type="number" class="mb-income" data-name="заробіток" min="0" value="0"><span class="cur">грн</span></div>
+<div class="my-budget-row"><span class="emoji">➕</span><span class="lbl">Інше</span><input type="number" class="mb-income" data-name="інше" min="0" value="0"><span class="cur">грн</span></div>
+<div class="my-budget-total"><span>Мій дохід:</span><span class="val" id="mbTotalIncome">0 грн</span></div>
+</div>
+<div class="my-budget-card">
+<div class="my-budget-title balance">⭐ ЗАЛИШОК</div>
+<div class="my-budget-total"><span>Залишок:</span><span class="val" id="mbBalance">0 грн</span></div>
+<p class="my-budget-desc">Це гроші, які залишаються після всіх витрат і заощаджень.</p>
+</div>
+</div>
+<div class="my-budget-col">
+<div class="my-budget-center">
+<div class="my-budget-center-card">
+<div class="big">🧮</div>
+<div class="txt">БЮДЖЕТ</div>
+</div>
+</div>
+<div class="my-budget-card">
+<div class="my-budget-title savings">💰 МОЇ ЗАОЩАДЖЕННЯ</div>
+<label style="font-size:13px;color:var(--text)">На що я хочу заощадити?</label>
+<input type="text" class="my-budget-goal" id="mbGoal" placeholder="Наприклад: новий телефон">
+<div class="my-budget-row" style="margin-top:10px">
+<span class="lbl">Сума заощаджень:</span>
+<input type="number" id="mbSavings" min="0" value="0" style="width:90px">
+<span class="cur">грн</span>
+</div>
+</div>
+<div class="my-budget-card">
+<div class="my-budget-title deficit">⛈️ ДЕФІЦИТ</div>
+<div class="my-budget-total"><span>Дефіцит:</span><span class="val" id="mbDeficit">0 грн</span></div>
+<p class="my-budget-desc">Це коли витрати перевищують дохід.</p>
+</div>
+</div>
+<div class="my-budget-col">
+<div class="my-budget-card">
+<div class="my-budget-title expense">🛍️ МОЇ ВИТРАТИ</div>
+<div class="my-budget-row"><span class="emoji">🛒</span><span class="lbl">Харчування</span><input type="number" class="mb-expense" data-name="харчування" min="0" value="0"><span class="cur">грн</span></div>
+<div class="my-budget-row"><span class="emoji">🚌</span><span class="lbl">Транспорт</span><input type="number" class="mb-expense" data-name="транспорт" min="0" value="0"><span class="cur">грн</span></div>
+<div class="my-budget-row"><span class="emoji">📚</span><span class="lbl">Навчання, розвиток</span><input type="number" class="mb-expense" data-name="навчання" min="0" value="0"><span class="cur">грн</span></div>
+<div class="my-budget-row"><span class="emoji">👕</span><span class="lbl">Одяг, взуття</span><input type="number" class="mb-expense" data-name="одяг" min="0" value="0"><span class="cur">грн</span></div>
+<div class="my-budget-row"><span class="emoji">🎧</span><span class="lbl">Розваги, відпочинок</span><input type="number" class="mb-expense" data-name="розваги" min="0" value="0"><span class="cur">грн</span></div>
+<div class="my-budget-row"><span class="emoji">📱</span><span class="lbl">Зв'язок, інтернет</span><input type="number" class="mb-expense" data-name="зв'язок" min="0" value="0"><span class="cur">грн</span></div>
+<div class="my-budget-row"><span class="emoji">💬</span><span class="lbl">Інше</span><input type="number" class="mb-expense" data-name="інше" min="0" value="0"><span class="cur">грн</span></div>
+<div class="my-budget-total"><span>Всього витрат:</span><span class="val" id="mbTotalExpense">0 грн</span></div>
+</div>
+<button class="my-budget-check-btn" onclick="chkMyBudget()">✓ Перевірити мій бюджет</button>
+</div>
+</div>
+</div>
+<div id="s4t2f" class="feedback" style="display:none"></div>
+<div class="navigation"><button class="btn btn-secondary" onclick="showS4('s4t1')">← Назад</button><button class="btn btn-success" onclick="showS4('s4t3')">Далі →</button></div>
+</section>
+<section class="card hidden" id="s4t3">
+<h2>🔄 Завдання 3. Віднови порядок кроків бюджету</h2>
+<div class="tap-instruction">
+<div class="tap-instruction-icon">👆</div>
+<div><strong>Як виконувати:</strong><br>
+1️⃣ Натисни на крок у верхньому блоці — він підсвітиться жовтим.<br>
+2️⃣ Натисни на пронумерований слот (1–4) нижче — крок стане на своє місце.<br>
+3️⃣ Щоб повернути крок назад — натисни ✕ у слоті.</div>
+</div>
+<div class="sort-container">
+<div class="sort-bank">
+<div class="sort-bank-title">📦 Кроки планування бюджету (перемішані)</div>
+<div id="sortBank"></div>
+</div>
+<div>
+<div class="sort-bank-title">🎯 Правильний порядок (1 → 4)</div>
+<div class="sort-slots" id="sortSlots"></div>
+</div>
+</div>
+<div style="text-align:center;margin-top:12px"><button class="dnd-reset-btn" onclick="resetSort()">🔄 Перемішати знову</button></div>
+<div id="s4t3f" class="feedback" style="display:none"></div>
+<div class="navigation"><button class="btn btn-secondary" onclick="showS4('s4t2')">← Назад</button><button class="btn btn-primary" onclick="chkSort()">✓ Перевірити</button><button class="btn btn-success" onclick="goToStep(5)">Далі: Крок 5 →</button></div>
+</section>
+</main>
+<main class="container hidden" id="step5Page">
+<div class="step-header"><div class="step-header-top"><h2 class="step-title">🛒 Крок 5. Культура споживання</h2><span class="step-badge">2 завдання</span></div></div>
+<section class="card" id="s5Theory">
+<h2>📖 Теоретичний блок</h2>
+<div class="theory-compact" style="background:linear-gradient(135deg,#fce7f3,#fbcfe8);border-color:#f9a8d4">
+<h4 style="color:#be185d">🛒 Що таке культура споживання?</h4>
+<p><strong>Культура споживання</strong> — це відповідальне ставлення до вибору, придбання, використання та утилізації товарів і послуг. Вона передбачає, що людина враховує власні потреби й фінансові можливості, оцінює якість і безпечність товару, уникає зайвих покупок та зважає на наслідки свого вибору.</p>
+</div>
+<h3 style="margin:24px 0 16px;color:var(--primary)">🌟 Сім правил розумного покупця</h3>
+<div class="rules-grid">
+<div class="rule-card" style="border-left-color:#dc2626"><h5>🚫 Уникай імпульсивних покупок</h5><p>Не купуй одразу під впливом емоцій, знижок або реклами.</p></div>
+<div class="rule-card" style="border-left-color:#f59e0b"><h5>⏸️ Зроби паузу</h5><p>Якщо покупка не термінова, відклади рішення на один день.</p></div>
+<div class="rule-card" style="border-left-color:#16a34a"><h5>💰 Не витрачай усі свої кошти</h5><p>Залиш частину грошей на непередбачувані витрати.</p></div>
+<div class="rule-card" style="border-left-color:#2563eb"><h5>📝 Купуй лише після плану</h5><p>Склади список потрібного. Так ти уникнеш зайвих витрат.</p></div>
+<div class="rule-card" style="border-left-color:#a855f7"><h5>🔍 Порівнюй ціни й умови</h5><p>Порівняй кілька варіантів: ціну, якість, гарантію, термін служби.</p></div>
+<div class="rule-card" style="border-left-color:#0891b2"><h5>✅ Перевіряй якість</h5><p>Звертай увагу на якість товару, виробника, склад, сертифікати та відгуки.</p></div>
+<div class="rule-card" style="border-left-color:#be185d"><h5>📺 Не піддавайся рекламі</h5><p>Орієнтуйся насамперед на власні потреби, а не на чужий вплив.</p></div>
+</div>
+<div class="key-point">💡 <strong>Висновок:</strong> Відповідальне ставлення до доходів, бюджету та покупок є основою фінансової грамотності.</div>
+<div class="navigation"><button class="btn btn-secondary" onclick="goToMainPage()">← До змісту</button><button class="btn btn-primary" onclick="showS5('s5t1')">Далі: Завдання 1 →</button></div>
+</section>
+<section class="card hidden" id="s5t1">
+<h2>🎮 Завдання 1. Симулятор: ти — розумний покупець</h2>
+<div class="feedback feedback-warning mb-24"><strong>📌 Ситуація:</strong> У тебе є 2000 грн. Ти йдеш у торговий центр. Обери стратегію, яка відповідає культурі споживання.</div>
+<div class="task-options" id="s5t1">
+<div class="option" data-correct="false" onclick="selRadio(this,'s5t1')" tabindex="0" role="radio"><div class="option-radio"></div><div class="option-text"><div class="option-label">🛒 Купити все, що сподобається, поки гроші не закінчаться</div></div></div>
+<div class="option" data-correct="false" onclick="selRadio(this,'s5t1')" tabindex="0" role="radio"><div class="option-radio"></div><div class="option-text"><div class="option-label">📱 Одразу купити найдорожчу річ, яку побачиш в Instagram-рекламі</div></div></div>
+<div class="option" data-correct="true" onclick="selRadio(this,'s5t1')" tabindex="0" role="radio"><div class="option-radio"></div><div class="option-text"><div class="option-label">📝 Заздалегідь скласти список потрібного, порівняти ціни, залишити резерв</div></div></div>
+<div class="option" data-correct="false" onclick="selRadio(this,'s5t1')" tabindex="0" role="radio"><div class="option-radio"></div><div class="option-text"><div class="option-label">💳 Взяти кредит, щоб купити все одразу, а потім розплачуватися</div></div></div>
+</div>
+<div id="s5t1f" class="feedback" style="display:none"></div>
+<div class="navigation"><button class="btn btn-secondary" onclick="showS5('s5Theory')">← Назад</button><button class="btn btn-primary" onclick="chkRadio('s5t1','s5t1f','step5_task1')">✓ Перевірити</button><button class="btn btn-success" onclick="showS5('s5t2')">Далі →</button></div>
+</section>
+<section class="card hidden" id="s5t2">
+<h2>✅❌ Завдання 2. Міфи про покупки</h2>
+<div class="feedback feedback-warning mb-24"><strong>📌 Інструкція:</strong> Визнач, які твердження є МІФАМИ (неправильними).</div>
+<div class="accordion-item">
+<div class="accordion-header" onclick="toggleAccordion(this)"><span>📋 «Якщо річ на великій знижці — це обов'язково треба купувати»</span><span class="accordion-icon">▼</span></div>
+<div class="accordion-content"><div class="accordion-body">
+<div class="tf-container" id="s5t2q1">
+<div class="tf-card" onclick="tfSel(this,'s5t2q1','myth')" tabindex="0" role="button"><div class="tf-card-icon">🚫</div><div class="tf-card-title">МІФ</div></div>
+<div class="tf-card" onclick="tfSel(this,'s5t2q1','truth')" tabindex="0" role="button"><div class="tf-card-icon">✅</div><div class="tf-card-title">ПРАВДА</div></div>
+</div>
+</div></div></div>
+<div class="accordion-item">
+<div class="accordion-header" onclick="toggleAccordion(this)"><span>📋 «Перед покупкою варто скласти список потрібного»</span><span class="accordion-icon">▼</span></div>
+<div class="accordion-content"><div class="accordion-body">
+<div class="tf-container" id="s5t2q2">
+<div class="tf-card" onclick="tfSel(this,'s5t2q2','myth')" tabindex="0" role="button"><div class="tf-card-icon">🚫</div><div class="tf-card-title">МІФ</div></div>
+<div class="tf-card" onclick="tfSel(this,'s5t2q2','truth')" tabindex="0" role="button"><div class="tf-card-icon">✅</div><div class="tf-card-title">ПРАВДА</div></div>
+</div>
+</div></div></div>
+<div class="accordion-item">
+<div class="accordion-header" onclick="toggleAccordion(this)"><span>📋 «Розумний покупець завжди витрачає всі свої кошти»</span><span class="accordion-icon">▼</span></div>
+<div class="accordion-content"><div class="accordion-body">
+<div class="tf-container" id="s5t2q3">
+<div class="tf-card" onclick="tfSel(this,'s5t2q3','myth')" tabindex="0" role="button"><div class="tf-card-icon">🚫</div><div class="tf-card-title">МІФ</div></div>
+<div class="tf-card" onclick="tfSel(this,'s5t2q3','truth')" tabindex="0" role="button"><div class="tf-card-icon">✅</div><div class="tf-card-title">ПРАВДА</div></div>
+</div>
+</div></div></div>
+<div class="accordion-item">
+<div class="accordion-header" onclick="toggleAccordion(this)"><span>📋 «Порівняння цін у різних магазинах допомагає зекономити»</span><span class="accordion-icon">▼</span></div>
+<div class="accordion-content"><div class="accordion-body">
+<div class="tf-container" id="s5t2q4">
+<div class="tf-card" onclick="tfSel(this,'s5t2q4','myth')" tabindex="0" role="button"><div class="tf-card-icon">🚫</div><div class="tf-card-title">МІФ</div></div>
+<div class="tf-card" onclick="tfSel(this,'s5t2q4','truth')" tabindex="0" role="button"><div class="tf-card-icon">✅</div><div class="tf-card-title">ПРАВДА</div></div>
+</div>
+</div></div></div>
+<div id="s5t2f" class="feedback" style="display:none"></div>
+<div class="navigation"><button class="btn btn-secondary" onclick="showS5('s5t1')">← Назад</button><button class="btn btn-primary" onclick="chkAllTF('s5t2',{s5t2q1:'myth',s5t2q2:'truth',s5t2q3:'myth',s5t2q4:'truth'},'step5_task2')">✓ Завершити</button><button class="btn btn-success" onclick="goToStep(6)">Далі: Самооцінювання →</button></div>
+</section>
+</main>
+<main class="container hidden" id="step6Page">
+<div class="step6-header"><h2>🎉 Вітаємо! Ти завершив(ла) параграф!</h2><p>Час дізнатися свій рівень</p></div>
+<div class="card"><h2>⭐ Оцініть свої вміння</h2>
+<div class="skill-eval"><div class="skill-title">💵 Я можу назвати джерела доходів особи та сім'ї</div><div class="star-rating" data-skill="1"><span class="star" onclick="rate(1,1)">★</span><span class="star" onclick="rate(1,2)">★</span><span class="star" onclick="rate(1,3)">★</span><span class="star" onclick="rate(1,4)">★</span><span class="star" onclick="rate(1,5)">★</span></div></div>
+<div class="skill-eval"><div class="skill-title">💼 Я розрізняю форми зайнятості та види винагороди</div><div class="star-rating" data-skill="2"><span class="star" onclick="rate(2,1)">★</span><span class="star" onclick="rate(2,2)">★</span><span class="star" onclick="rate(2,3)">★</span><span class="star" onclick="rate(2,4)">★</span><span class="star" onclick="rate(2,5)">★</span></div></div>
+<div class="skill-eval"><div class="skill-title">📊 Я можу скласти простий особистий або сімейний бюджет</div><div class="star-rating" data-skill="3"><span class="star" onclick="rate(3,1)">★</span><span class="star" onclick="rate(3,2)">★</span><span class="star" onclick="rate(3,3)">★</span><span class="star" onclick="rate(3,4)">★</span><span class="star" onclick="rate(3,5)">★</span></div></div>
+<div class="skill-eval"><div class="skill-title">🛒 Я вмію робити обдуманий споживчий вибір</div><div class="star-rating" data-skill="4"><span class="star" onclick="rate(4,1)">★</span><span class="star" onclick="rate(4,2)">★</span><span class="star" onclick="rate(4,3)">★</span><span class="star" onclick="rate(4,4)">★</span><span class="star" onclick="rate(4,5)">★</span></div></div>
+<div class="skill-eval"><div class="skill-title">🎯 Я розумію різницю між позикою та доходом</div><div class="star-rating" data-skill="5"><span class="star" onclick="rate(5,1)">★</span><span class="star" onclick="rate(5,2)">★</span><span class="star" onclick="rate(5,3)">★</span><span class="star" onclick="rate(5,4)">★</span><span class="star" onclick="rate(5,5)">★</span></div></div>
+</div>
+<div class="stats-grid">
+<div class="stat-card"><div class="stat-value" id="statTasks">0/12</div><div class="stat-label">✅ Виконано</div></div>
+<div class="stat-card"><div class="stat-value" id="statCorrect">0</div><div class="stat-label">🎯 Правильних</div></div>
+<div class="stat-card"><div class="stat-value" id="statSteps">0/5</div><div class="stat-label">📍 Кроків</div></div>
+<div class="stat-card"><div class="stat-value" id="statAccuracy">0%</div><div class="stat-label">🏅 Точність</div></div>
+</div>
+<div class="progress-circle-container"><div class="progress-circle" id="progressCircle"><div class="progress-circle-inner"><div class="circle-percentage" id="circlePercentage">0%</div><div class="circle-label">Прогрес</div></div></div></div>
+<div style="text-align:center"><div class="level-badge"><div class="level-badge-icon">⭐</div><div><div class="level-badge-title" id="finalLevelTitle">Початківець</div><div class="level-badge-desc" id="finalLevelDesc">⭐☆☆☆☆</div></div></div></div>
+<div class="tip-card">💡 <strong>Гроші дають можливості, а відповідальний вибір допомагає використати їх розумно.</strong><br>🌱 Дбай про фінансову грамотність вже сьогодні!</div>
+<div class="navigation"><button class="btn btn-warning" onclick="resetProgress()">🔄 Пройти ще раз</button><button class="btn btn-primary" onclick="goToMainPage()">🏠 На головну</button></div>
+</main>
+<div class="modal-overlay" id="progressModal" role="dialog" aria-modal="true" aria-labelledby="pTitle">
+<div class="modal"><div class="modal-header"><h2 id="pTitle">📊 Мій прогрес</h2><button class="modal-close" onclick="closeModal('progressModal')" aria-label="Закрити">✕</button></div>
+<div class="text-center"><div style="font-size:48px;margin-bottom:16px" id="mEmoji">⭐☆☆☆☆</div><h3 style="color:var(--primary);margin-bottom:24px" id="mName">Початківець</h3>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px">
+<div style="background:var(--bg);padding:14px;border-radius:12px"><div style="font-size:24px;font-weight:700;color:var(--accent)" id="mT">0/12</div><div style="font-size:12px;color:var(--text-muted)">Завдань</div></div>
+<div style="background:var(--bg);padding:14px;border-radius:12px"><div style="font-size:24px;font-weight:700;color:var(--success)" id="mC">0</div><div style="font-size:12px;color:var(--text-muted)">Правильних</div></div>
+<div style="background:var(--bg);padding:14px;border-radius:12px"><div style="font-size:24px;font-weight:700;color:var(--warning)" id="mS">0/5</div><div style="font-size:12px;color:var(--text-muted)">Кроків</div></div>
+<div style="background:var(--bg);padding:14px;border-radius:12px"><div style="font-size:24px;font-weight:700;color:var(--primary)" id="mA">0%</div><div style="font-size:12px;color:var(--text-muted)">Точність</div></div>
+</div>
+<div style="background:var(--border);height:12px;border-radius:6px;overflow:hidden;margin-bottom:12px"><div id="mBar" style="height:100%;background:linear-gradient(90deg,var(--accent),var(--success));width:0%;transition:width .5s"></div></div>
+<p style="font-weight:600;color:var(--primary)">Прогрес: <span id="mP">0%</span></p></div></div></div>
+<div class="modal-overlay" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="hTitle">
+<div class="modal"><div class="modal-header"><h2 id="hTitle">❓ Як працювати</h2><button class="modal-close" onclick="closeModal('helpModal')" aria-label="Закрити">✕</button></div>
+<div class="feature-list">
+<div data-icon="🚀" style="padding:10px 0 10px 32px;position:relative;border-bottom:1px solid var(--border)"><strong>Як почати?</strong><br>Натисни «Розпочати параграф».</div>
+<div data-icon="✅" style="padding:10px 0 10px 32px;position:relative;border-bottom:1px solid var(--border)"><strong>Форми завдань:</strong><br>Тести, tap-to-tap, класифікація, зіставлення, акордеон, правда/брехня, сортування, симулятор бюджету, калькулятор особистого бюджету.</div>
+<div data-icon="📱" style="padding:10px 0 10px 32px;position:relative;border-bottom:1px solid var(--border)"><strong>На телефоні:</strong><br>Усі перетягування працюють через прості натискання — обери елемент, потім обери місце.</div>
+<div data-icon="🏆" style="padding:10px 0 10px 32px;position:relative"><strong>Прогрес:</strong><br>Натисни на віджет прогресу для перегляду статистики.</div>
+</div>
+<button class="btn btn-primary mt-24" onclick="closeModal('helpModal')" style="width:100%">Зрозуміло!</button></div></div>
+<script>
+var TOTAL_TASKS = 12;
+var ST = {
+step1: {t:1, c:0, tasks:{task1:0}},
+step2: {t:4, c:0, tasks:{task1:0, task1b:0, task2:0, task3:0}},
+step3: {t:3, c:0, tasks:{task1:0, task2:0, task3:0}},
+step4: {t:3, c:0, tasks:{task1:0, task2:0, task3:0}},
+step5: {t:2, c:0, tasks:{task1:0, task2:0}}
+};
+var SC = {1:0, 2:0, 3:0, 4:0, 5:0};
+var PT = {c:0, t:TOTAL_TASKS, a:[]};
+var state = {cs:0, sr:[0,0,0,0,0]};
+var tfCompleted = {};
+function addC(id) {
+if (PT.a.indexOf(id) !== -1) return;
+PT.a.push(id);
+PT.c++;
+updST(id);
+updLive();
+saveP();
+}
+function updST(id) {
+var match = id.match(/step(\d+)_(task\d+[a-z]?)/);
+if (!match) return;
+var stepNum = parseInt(match[1]);
+var taskName = match[2];
+var stepKey = "step" + stepNum;
+var s = ST[stepKey];
+if (s && s.tasks.hasOwnProperty(taskName)) {
+s.tasks[taskName] = 1;
+s.c = 0;
+for (var k in s.tasks) { if (s.tasks[k]) s.c++; }
+if (s.c === s.t && !SC[stepNum]) {
+SC[stepNum] = 1;
+showToast("Крок " + stepNum + " завершено!", "🏆");
+}
+}
+updS6();
+}
+function updLive() {
+try {
+var c = 0;
+for (var i = 1; i <= 5; i++) c += ST["step" + i].c;
+var p = Math.min(100, Math.round(c / TOTAL_TASKS * 100));
+var b = document.getElementById("topProgressBar");
+if (b) b.style.width = p + "%";
+var wp = document.getElementById("widgetPercentage");
+if (wp) wp.textContent = p + "%";
+var wt = document.getElementById("widgetTasks");
+if (wt) wt.textContent = c + "/" + TOTAL_TASKS;
+updateWidgetMiniMap();
+renderNav();
+updS6();
+} catch (err) { console.error("Error:", err); }
+}
+function updateWidgetMiniMap() {
+var wb = document.getElementById("widgetMiniMap");
+if (!wb) return;
+wb.innerHTML = "";
+for (var i = 1; i <= 5; i++) {
+var dot = document.createElement("div");
+dot.className = "mini-step";
+if (SC[i]) dot.classList.add("completed");
+else if (i === state.cs) dot.classList.add("current");
+dot.textContent = i;
+wb.appendChild(dot);
+}
+}
+function saveP() {
+try {
+sessionStorage.setItem("s29v4", JSON.stringify({
+PT: {c: PT.c, t: TOTAL_TASKS, a: PT.a},
+ST: ST, SC: SC, state: state
+}));
+} catch (err) { console.error("Error saving:", err); }
+}
+function loadP() {
+try {
+var s = localStorage.getItem("s29v4");
+if (s) {
+var d = JSON.parse(s);
+if (d.PT) { PT.c = d.PT.c || 0; PT.a = d.PT.a || []; }
+if (d.ST) {
+for (var i = 1; i <= 5; i++) {
+if (d.ST["step" + i]) {
+ST["step" + i].c = d.ST["step" + i].c || 0;
+ST["step" + i].tasks = d.ST["step" + i].tasks || ST["step" + i].tasks;
+}
+}
+}
+if (d.SC) { for (var j = 1; j <= 5; j++) SC[j] = d.SC[j] || 0; }
+if (d.state) {
+state.cs = d.state.cs || 0;
+state.sr = d.state.sr || [0,0,0,0,0];
+while (state.sr.length < 5) state.sr.push(0);
+}
+}
+} catch (err) { console.error("Error loading:", err); }
+updLive();
+renderNav();
+}
+var steps = [
+{id:1, icon:"🎯", title:"Стартове завдання", tasks:1},
+{id:2, icon:"💵", title:"Джерела доходів", tasks:4},
+{id:3, icon:"💼", title:"Форми зайнятості", tasks:3},
+{id:4, icon:"📊", title:"Планування бюджету", tasks:3},
+{id:5, icon:"🛒", title:"Культура споживання", tasks:2},
+{id:6, icon:"🏆", title:"Самооцінювання", tasks:0}
+];
+function renderNav() {
+var n = document.getElementById("stepNavigation");
+if (!n) return;
+n.innerHTML = "";
+for (var i = 0; i < steps.length; i++) {
+var s = steps[i];
+var d = document.createElement("div");
+d.className = "step-nav-item";
+var td = s.tasks > 0 ? ST["step" + s.id].c : 0;
+var ic = s.tasks > 0 && SC[s.id];
+if (s.id === 6 && SC[5]) d.classList.add("completed");
+else if (ic) d.classList.add("completed");
+else if (i === state.cs - 1) d.classList.add("active");
+d.innerHTML = '<div class="step-nav-number">' + (ic ? "✓" : (i+1)) + '</div><div class="step-nav-content"><div class="step-nav-title">' + s.icon + " " + s.title + '</div><div class="step-nav-status">' + (s.tasks > 0 ? td + "/" + s.tasks + " завдань" : "Фінал") + '</div></div>';
+d.setAttribute("tabindex", "0");
+d.setAttribute("role", "button");
+(function(idx) {
+d.onclick = function() { goToStep(idx + 1); };
+d.onkeydown = function(e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); goToStep(idx + 1); } };
+})(i);
+n.appendChild(d);
+}
+}
+function updS6() {
+var c = 0;
+for (var i = 1; i <= 5; i++) c += ST["step" + i].c;
+var p = Math.min(100, Math.round(c / TOTAL_TASKS * 100));
+var ac = PT.t > 0 ? Math.round(PT.c / PT.t * 100) : 0;
+var cs = 0;
+for (var j = 1; j <= 5; j++) { if (SC[j]) cs++; }
+var e = function(id, v) { var el = document.getElementById(id); if (el) el.textContent = v; };
+e("statTasks", c + "/" + TOTAL_TASKS);
+e("statCorrect", PT.c);
+e("statSteps", cs + "/5");
+e("statAccuracy", ac + "%");
+var ci = document.getElementById("progressCircle");
+if (ci) ci.style.background = "conic-gradient(var(--success) " + p + "%,var(--bg) " + p + "%)";
+var cp = document.getElementById("circlePercentage");
+if (cp) cp.textContent = p + "%";
+var l = "Початківець", em = "⭐☆☆☆☆";
+if (p >= 76) { l = "Експерт з бюджету"; em = "⭐⭐⭐⭐⭐"; }
+else if (p >= 51) { l = "Досвідчений учень"; em = "⭐⭐⭐☆☆"; }
+else if (p >= 26) { l = "Учень"; em = "⭐⭐☆☆☆"; }
+e("finalLevelTitle", l);
+e("finalLevelDesc", em);
+for (var k = 0; k < state.sr.length; k++) { if (state.sr[k] > 0) rate(k + 1, state.sr[k]); }
+}
+function hideAll() {
+var pages = ["mainPage","step1Page","step2Page","step3Page","step4Page","step5Page","step6Page"];
+for (var i = 0; i < pages.length; i++) {
+var el = document.getElementById(pages[i]);
+if (el) el.classList.add("hidden");
+}
+}
+function goToMainPage() {
+hideAll();
+document.getElementById("mainPage").classList.remove("hidden");
+document.getElementById("headerTitle").textContent = "💰 § 31. Бюджет: доходи та витрати";
+state.cs = 0;
+saveP();
+window.scrollTo({top: 0, behavior: "smooth"});
+}
+function goToStep(n) {
+hideAll();
+var pages = {1:"step1Page",2:"step2Page",3:"step3Page",4:"step4Page",5:"step5Page",6:"step6Page"};
+var el = document.getElementById(pages[n]);
+if (el) {
+el.classList.remove("hidden");
+state.cs = n;
+if (n === 2) showS2("s2Theory");
+if (n === 3) showS3("s3Theory");
+if (n === 4) showS4("s4Theory");
+if (n === 5) showS5("s5Theory");
+if (n === 6) updS6();
+saveP();
+window.scrollTo({top: 0, behavior: "smooth"});
+}
+}
+function showS2(id) {
+["s2Theory","s2t1","s2t1b","s2t2","s2t3"].forEach(function(s) { var e = document.getElementById(s); if (e) e.classList.add("hidden"); });
+document.getElementById(id).classList.remove("hidden");
+if (id === "s2t1") initClassify();
+if (id === "s2t1b") initGroupClassify();
+window.scrollTo({top: 0, behavior: "smooth"});
+}
+function showS3(id) {
+["s3Theory","s3t1","s3t2","s3t3"].forEach(function(s) { var e = document.getElementById(s); if (e) e.classList.add("hidden"); });
+document.getElementById(id).classList.remove("hidden");
+window.scrollTo({top: 0, behavior: "smooth"});
+}
+function showS4(id) {
+["s4Theory","s4t1","s4t2","s4t3"].forEach(function(s) { var e = document.getElementById(s); if (e) e.classList.add("hidden"); });
+document.getElementById(id).classList.remove("hidden");
+if (id === "s4t1") initBudget();
+if (id === "s4t2") initMyBudget();
+if (id === "s4t3") initSort();
+window.scrollTo({top: 0, behavior: "smooth"});
+}
+function showS5(id) {
+["s5Theory","s5t1","s5t2"].forEach(function(s) { var e = document.getElementById(s); if (e) e.classList.add("hidden"); });
+document.getElementById(id).classList.remove("hidden");
+window.scrollTo({top: 0, behavior: "smooth"});
+}
+var incomeData = {
+labor: {title:"💼 Трудові надходження", desc:"Зароблені власною працею", items:["Заробітна плата","Надбавки, премії, бонуси","Винагорода фрілансера","Дохід від підприємницької діяльності","Доходи від особистого підсобного господарства"]},
+property: {title:"🏠 Доходи від власності", desc:"Пасивний дохід від майна", items:["Відсотки за депозитом","Дивіденди","Орендна плата","Доходи від продажу активів"]},
+social: {title:"🤝 Соціальні доходи", desc:"Допомога від держави", items:["Пенсія","Стипендія","Субсидія","Пільги","Соціальна допомога"]},
+other: {title:"🎁 Інші доходи", desc:"Разові надходження", items:["Подарунки","Спадщина","Виграш у лотерею"]}
+};
+function showIncome(type) {
+var branches = document.querySelectorAll(".income-branch");
+for (var i = 0; i < branches.length; i++) branches[i].classList.remove("active");
+var data = incomeData[type];
+var details = document.getElementById("incomeDetails");
+var html = '<h5>' + data.title + '</h5><p style="font-size:13px;color:var(--text-muted);margin-bottom:8px;font-style:italic">' + data.desc + '</p><ul style="list-style:none;padding:0">';
+for (var j = 0; j < data.items.length; j++) html += '<li style="padding:6px 0;font-size:14px;border-bottom:1px solid var(--border)">• ' + data.items[j] + '</li>';
+html += '</ul>';
+details.innerHTML = html;
+details.classList.add("active");
+var activeBranch = document.querySelector(".branch-" + type);
+if (activeBranch) activeBranch.classList.add("active");
+}
+function toggleEmpCard(headerEl) {
+var card = headerEl.parentElement;
+var wasActive = card.classList.contains("active");
+var allCards = document.querySelectorAll(".emp-card");
+for (var i = 0; i < allCards.length; i++) allCards[i].classList.remove("active");
+if (!wasActive) {
+card.classList.add("active");
+setTimeout(function() {
+var rect = card.getBoundingClientRect();
+if (rect.top < 100 || rect.bottom > window.innerHeight) {
+card.scrollIntoView({behavior: "smooth", block: "start"});
+}
+}, 150);
+}
+}
+var budgetData = [
+{id:1, name:"🏠 Житло (оренда, комунальні)", price:15000, type:"need", must:true},
+{id:2, name:"🍎 Харчування", price:12000, type:"need", must:true},
+{id:3, name:"🚌 Транспорт", price:4000, type:"need", must:true},
+{id:4, name:"📚 Навчання (університет, секції)", price:5000, type:"need", must:true},
+{id:5, name:"👕 Одяг, взуття", price:3000, type:"need", must:false},
+{id:6, name:"🏥 Медицина і здоров'я", price:2500, type:"need", must:true},
+{id:7, name:"📱 Зв'язок і інтернет", price:1500, type:"need", must:false},
+{id:8, name:"🎬 Відпочинок і розваги", price:3000, type:"want", must:false},
+{id:9, name:"🎁 Подарунки та інше", price:1800, type:"want", must:false},
+{id:10, name:"🏦 Заощадження", price:4000, type:"save", must:true}
+];
+var BUDGET_LIMIT = 67300;
+var budgetSelected = [];
+function initBudget() {
+var container = document.getElementById("budgetItems");
+if (!container) return;
+container.innerHTML = "";
+budgetSelected = [];
+for (var i = 0; i < budgetData.length; i++) {
+var item = budgetData[i];
+var div = document.createElement("div");
+div.className = "budget-item";
+div.dataset.id = item.id;
+div.dataset.type = item.type;
+div.dataset.price = item.price;
+div.dataset.must = item.must;
+var typeLabel = item.type === "need" ? (item.must ? "🟢 Обов'язкова" : "🟡 Потрібна") : (item.type === "want" ? "🟠 Бажання" : "🔵 Заощадження");
+div.innerHTML = '<div class="budget-item-name">' + item.name + '</div><div class="budget-item-price">' + item.price.toLocaleString() + ' грн</div><div class="budget-item-type">' + typeLabel + '</div>';
+div.onclick = function() { toggleBudgetItem(this); };
+container.appendChild(div);
+}
+updateBudgetDisplay();
+var fb = document.getElementById("budgetFeedback");
+if (fb) fb.innerHTML = '<strong style="color:var(--primary)">💡 Порада:</strong> Обери витрати, натискаючи на картки. Потім натисни «Перевірити».';
+}
+function toggleBudgetItem(el) {
+var id = parseInt(el.dataset.id);
+var price = parseInt(el.dataset.price);
+var currentSpent = 0;
+for (var i = 0; i < budgetSelected.length; i++) currentSpent += budgetSelected[i].price;
+if (el.classList.contains("selected")) {
+el.classList.remove("selected");
+budgetSelected = budgetSelected.filter(function(x) { return x.id !== id; });
+} else {
+if (currentSpent + price > BUDGET_LIMIT) {
+showToast("Перевищення бюджету!", "⚠️");
+return;
+}
+el.classList.add("selected");
+budgetSelected.push({id:id, price:price, type:el.dataset.type, must:el.dataset.must === "true"});
+}
+updateBudgetDisplay();
+}
+function updateBudgetDisplay() {
+var spent = 0;
+for (var i = 0; i < budgetSelected.length; i++) spent += budgetSelected[i].price;
+var remaining = BUDGET_LIMIT - spent;
+document.getElementById("budgetSpent").textContent = spent.toLocaleString() + " грн";
+document.getElementById("budgetRemaining").textContent = remaining.toLocaleString() + " грн";
+}
+function chkBudget() {
+var f = document.getElementById("s4t1f");
+if (!f) return;
+f.style.display = "block";
+var fb = document.getElementById("budgetFeedback");
+if (budgetSelected.length === 0) {
+f.className = "feedback feedback-warning";
+f.innerHTML = "⚠️ Обери хоча б одну витрату.";
+return;
+}
+var spent = 0;
+for (var i = 0; i < budgetSelected.length; i++) spent += budgetSelected[i].price;
+if (spent > BUDGET_LIMIT) {
+f.className = "feedback feedback-error";
+f.innerHTML = "<strong>❌ Дефіцит!</strong> Витрати перевищують доходи.";
+return;
+}
+var allMustCovered = true;
+var missed = [];
+for (var j = 0; j < budgetData.length; j++) {
+if (budgetData[j].must) {
+var found = false;
+for (var k = 0; k < budgetSelected.length; k++) {
+if (budgetSelected[k].id === budgetData[j].id) { found = true; break; }
+}
+if (!found) { allMustCovered = false; missed.push(budgetData[j].name); }
+}
+}
+var hasSavings = false;
+var savingsPercent = 0;
+for (var m = 0; m < budgetSelected.length; m++) {
+if (budgetSelected[m].type === "save") { hasSavings = true; savingsPercent = (budgetSelected[m].price / BUDGET_LIMIT) * 100; }
+}
+if (allMustCovered && hasSavings && savingsPercent >= 5) {
+f.className = "feedback feedback-success";
+f.innerHTML = "<strong>✅ Чудово! Раціональний бюджет!</strong><br>Ти покрив(ла) всі обов'язкові витрати, відклав(ла) кошти на заощадження. Це свідомий підхід!";
+fb.innerHTML = '<strong style="color:var(--success)">🎉 Раціональний підхід!</strong> Витрачено: ' + spent.toLocaleString() + ' грн, залишок: ' + (BUDGET_LIMIT - spent).toLocaleString() + ' грн.';
+addC("step4_task1");
+showToast("Завдання виконано!", "🎉");
+} else if (allMustCovered && !hasSavings) {
+f.className = "feedback feedback-warning";
+f.innerHTML = "<strong>💡 Майже правильно!</strong> Всі обов'язкові витрати покриті, але немає заощаджень. Свідомий бюджет передбачає резерв (не менше 10%).";
+} else if (!allMustCovered) {
+f.className = "feedback feedback-error";
+f.innerHTML = "<strong>❌ Не покриті обов'язкові витрати:</strong><br><em>" + missed.join(", ") + "</em>. Спочатку — потреби, потім — бажання.";
+}
+}
+var myBudgetChecked = false;
+function initMyBudget() {
+myBudgetChecked = false;
+var f = document.getElementById("s4t2f");
+if (f) f.style.display = "none";
+calcMyBudget();
+}
+function calcMyBudget() {
+var incomeInputs = document.querySelectorAll('.mb-income');
+var expenseInputs = document.querySelectorAll('.mb-expense');
+var savingsInput = document.getElementById('mbSavings');
+var totalIncome = 0;
+incomeInputs.forEach(function(inp) {
+totalIncome += parseFloat(inp.value) || 0;
+});
+var totalExpense = 0;
+expenseInputs.forEach(function(inp) {
+totalExpense += parseFloat(inp.value) || 0;
+});
+var savings = parseFloat(savingsInput.value) || 0;
+var balance = totalIncome - totalExpense - savings;
+var deficit = balance < 0 ? Math.abs(balance) : 0;
+document.getElementById('mbTotalIncome').textContent = totalIncome.toLocaleString() + ' грн';
+document.getElementById('mbTotalExpense').textContent = totalExpense.toLocaleString() + ' грн';
+var balEl = document.getElementById('mbBalance');
+balEl.textContent = balance.toLocaleString() + ' грн';
+balEl.parentElement.className = 'my-budget-total ' + (balance > 0 ? 'positive' : balance < 0 ? 'negative' : 'neutral');
+var defEl = document.getElementById('mbDeficit');
+defEl.textContent = deficit.toLocaleString() + ' грн';
+defEl.parentElement.className = 'my-budget-total ' + (deficit > 0 ? 'negative' : 'positive');
+}
+function chkMyBudget() {
+var f = document.getElementById("s4t2f");
+if (!f) return;
+f.style.display = "block";
+var incomeInputs = document.querySelectorAll('.mb-income');
+var expenseInputs = document.querySelectorAll('.mb-expense');
+var savingsInput = document.getElementById('mbSavings');
+var goalInput = document.getElementById('mbGoal');
+var totalIncome = 0;
+incomeInputs.forEach(function(inp) { totalIncome += parseFloat(inp.value) || 0; });
+var totalExpense = 0;
+expenseInputs.forEach(function(inp) { totalExpense += parseFloat(inp.value) || 0; });
+var savings = parseFloat(savingsInput.value) || 0;
+var goal = goalInput.value.trim();
+if (totalIncome === 0 && totalExpense === 0) {
+f.className = "feedback feedback-warning";
+f.innerHTML = "⚠️ Заповни хоча б доходи або витрати, щоб побачити свій бюджет.";
+return;
+}
+var balance = totalIncome - totalExpense - savings;
+var msg = "";
+if (balance > 0) {
+msg = "<strong>✅ Чудово!</strong> У тебе є залишок <strong>" + balance.toLocaleString() + " грн</strong>. " +
+"Це твої вільні кошти — ти можеш відкласти їх у резерв або використати на заощадження." +
+(goal ? "<br>🎯 Твоя ціль: <em>" + goal + "</em> — чудовий мотиватор заощаджувати!" : "");
+f.className = "feedback feedback-success";
+if (!myBudgetChecked) {
+addC("step4_task2");
+myBudgetChecked = true;
+showToast("Бюджет складено!", "🎉");
+}
+} else if (balance === 0) {
+msg = "<strong>💡 Баланс!</strong> Твої доходи дорівнюють витратам і заощадженням. " +
+"Це добре, але бажано мати невеликий резерв на непередбачувані витрати.";
+f.className = "feedback feedback-warning";
+if (!myBudgetChecked) {
+addC("step4_task2");
+myBudgetChecked = true;
+showToast("Бюджет складено!", "🎉");
+}
+} else {
+msg = "<strong>⚠️ Дефіцит!</strong> Твої витрати перевищують доходи на <strong>" + Math.abs(balance).toLocaleString() + " грн</strong>. " +
+"Переглянь витрати: можливо, щось можна скоротити. Пам'ятай: спочатку — потреби, потім — бажання!";
+f.className = "feedback feedback-error";
+}
+f.innerHTML = msg;
+}
+var sortItems = [
+{id:1, text:"Визнач доходи: запиши всі джерела надходжень"},
+{id:2, text:"Заплануй витрати: обов'язкові, бажані, непередбачені"},
+{id:3, text:"Порівняй доходи і витрати: резерв / баланс / дефіцит"},
+{id:4, text:"Прийми рішення: скороти зайве, створи резерв"}
+];
+var sortState = {selectedCard: null, slots: [null, null, null, null]};
+function initSort() {
+sortState.selectedCard = null;
+sortState.slots = [null, null, null, null];
+var bank = document.getElementById("sortBank");
+var slotsContainer = document.getElementById("sortSlots");
+if (!bank || !slotsContainer) return;
+bank.innerHTML = "";
+slotsContainer.innerHTML = "";
+var shuffled = sortItems.slice().sort(function() { return Math.random() - 0.5; });
+for (var i = 0; i < shuffled.length; i++) {
+var item = shuffled[i];
+var card = document.createElement("div");
+card.className = "classify-item";
+card.dataset.id = item.id;
+card.innerHTML = '<span>📋</span><span>' + item.text + '</span>';
+card.onclick = (function(id, el) { return function() { selectSortCard(id, el); }; })(item.id, card);
+bank.appendChild(card);
+}
+for (var j = 1; j <= 4; j++) {
+var slot = document.createElement("div");
+slot.className = "sort-slot";
+slot.dataset.slotNum = j;
+slot.innerHTML = '<div class="sort-slot-number">' + j + '</div><div class="sort-slot-placeholder">Натисни сюди, щоб поставити крок #' + j + '</div>';
+slot.onclick = (function(num, el) { return function() { placeToSlot(num, el); }; })(j, slot);
+slotsContainer.appendChild(slot);
+}
+var f = document.getElementById("s4t3f");
+if (f) f.style.display = "none";
+}
+function selectSortCard(id, el) {
+for (var i = 0; i < sortState.slots.length; i++) {
+if (sortState.slots[i] === id) {
+sortState.slots[i] = null;
+renderSlots();
+renderBank();
+return;
+}
+}
+var bankCards = document.querySelectorAll("#sortBank .classify-item");
+for (var k = 0; k < bankCards.length; k++) bankCards[k].classList.remove("selected");
+if (sortState.selectedCard === id) {
+sortState.selectedCard = null;
+return;
+}
+sortState.selectedCard = id;
+el.classList.add("selected");
+showToast("Тепер натисни на слот (1-4)", "👆");
+}
+function placeToSlot(slotNum, slotEl) {
+if (sortState.slots[slotNum - 1] !== null) {
+sortState.slots[slotNum - 1] = null;
+if (sortState.selectedCard !== null) {
+sortState.slots[slotNum - 1] = sortState.selectedCard;
+sortState.selectedCard = null;
+}
+renderSlots();
+renderBank();
+return;
+}
+if (sortState.selectedCard === null) {
+showToast("Спочатку натисни на крок у верхньому блоці", "💡");
+return;
+}
+for (var i = 0; i < sortState.slots.length; i++) {
+if (sortState.slots[i] === sortState.selectedCard) {
+sortState.slots[i] = null;
+}
+}
+sortState.slots[slotNum - 1] = sortState.selectedCard;
+sortState.selectedCard = null;
+renderSlots();
+renderBank();
+}
+function renderSlots() {
+var slotsContainer = document.getElementById("sortSlots");
+if (!slotsContainer) return;
+var slotEls = slotsContainer.querySelectorAll(".sort-slot");
+for (var i = 0; i < slotEls.length; i++) {
+var slotNum = i + 1;
+var itemId = sortState.slots[i];
+if (itemId === null) {
+slotEls[i].classList.remove("filled","correct-pos","incorrect-pos");
+slotEls[i].innerHTML = '<div class="sort-slot-number">' + slotNum + '</div><div class="sort-slot-placeholder">Натисни сюди, щоб поставити крок #' + slotNum + '</div>';
+slotEls[i].onclick = (function(num, el) { return function() { placeToSlot(num, el); }; })(slotNum, slotEls[i]);
+} else {
+var itemData = sortItems.find(function(x) { return x.id === itemId; });
+slotEls[i].classList.add("filled");
+slotEls[i].classList.remove("correct-pos","incorrect-pos");
+slotEls[i].innerHTML = '<div class="sort-slot-number">' + slotNum + '</div><div class="sort-slot-content">' + itemData.text + '</div><button class="sort-slot-remove" aria-label="Повернути">✕</button>';
+slotEls[i].onclick = (function(num, el) { return function(e) {
+if (e.target.classList.contains("sort-slot-remove")) {
+sortState.slots[num - 1] = null;
+renderSlots();
+renderBank();
+return;
+}
+placeToSlot(num, el);
+}; })(slotNum, slotEls[i]);
+}
+}
+}
+function renderBank() {
+var bank = document.getElementById("sortBank");
+if (!bank) return;
+var cards = bank.querySelectorAll(".classify-item");
+for (var i = 0; i < cards.length; i++) {
+var id = parseInt(cards[i].dataset.id);
+var inSlot = sortState.slots.indexOf(id) !== -1;
+cards[i].classList.remove("selected");
+if (inSlot) cards[i].classList.add("selected");
+else cards[i].classList.remove("selected");
+}
+}
+function resetSort() { initSort(); showToast("Перемішано!", "🔄"); }
+function chkSort() {
+var f = document.getElementById("s4t3f");
+if (!f) return;
+f.style.display = "block";
+var filledCount = 0;
+for (var i = 0; i < sortState.slots.length; i++) {
+if (sortState.slots[i] !== null) filledCount++;
+}
+if (filledCount < 4) {
+f.className = "feedback feedback-warning";
+f.innerHTML = "💡 Заповни всі 4 слоти! Заповнено: " + filledCount + " з 4.";
+return;
+}
+var slotsContainer = document.getElementById("sortSlots");
+var slotEls = slotsContainer.querySelectorAll(".sort-slot");
+var ok = true;
+for (var j = 0; j < sortState.slots.length; j++) {
+slotEls[j].classList.remove("correct-pos","incorrect-pos");
+if (sortState.slots[j] === j + 1) slotEls[j].classList.add("correct-pos");
+else { slotEls[j].classList.add("incorrect-pos"); ok = false; }
+}
+if (ok) {
+f.className = "feedback feedback-success";
+f.innerHTML = "<strong>✅ Чудово!</strong> Алгоритм планування бюджету відновлено правильно!";
+addC("step4_task3");
+showToast("Завдання виконано!", "🎉");
+} else {
+f.className = "feedback feedback-error";
+f.innerHTML = "<strong>❌ Не зовсім.</strong> Зеленим — правильна позиція, червоним — потрібно переставити.";
+setTimeout(function() {
+for (var k = 0; k < slotEls.length; k++) slotEls[k].classList.remove("correct-pos","incorrect-pos");
+}, 4000);
+}
+}
+var classifyData = [
+{text:"💼 Заробітна плата чоловіка", type:"labor"},
+{text:"💻 Оплата за фріланс дружини", type:"labor"},
+{text:"🎁 Премія чоловіка", type:"labor"},
+{text:"🏦 Відсотки за депозитом", type:"nonlabor"},
+{text:"🏠 Орендна плата за квартиру", type:"nonlabor"},
+{text:"🎓 Стипендія сина", type:"nonlabor"},
+{text:"👴 Пенсія дідуся", type:"nonlabor"},
+{text:"🎁 Подарунок до дня народження", type:"nonlabor"},
+{text:"🎰 Виграш у лотерею", type:"nonlabor"}
+];
+var classifyState = {selectedItem: null};
+function initClassify() {
+classifyState.selectedItem = null;
+var bank = document.getElementById("classifyBank");
+var laborDrop = document.getElementById("laborDrop");
+var nonlaborDrop = document.getElementById("nonlaborDrop");
+if (!bank) return;
+bank.innerHTML = "";
+if (laborDrop) laborDrop.innerHTML = "";
+if (nonlaborDrop) nonlaborDrop.innerHTML = "";
+var shuffled = classifyData.slice().sort(function() { return Math.random() - 0.5; });
+for (var i = 0; i < shuffled.length; i++) {
+var item = document.createElement("div");
+item.className = "classify-item";
+item.dataset.type = shuffled[i].type;
+item.innerHTML = '<span>📋</span><span>' + shuffled[i].text + '</span>';
+item.onclick = (function(el) { return function() { selectClassifyItem(el); }; })(item);
+bank.appendChild(item);
+}
+var f = document.getElementById("s2t1f");
+if (f) f.style.display = "none";
+}
+function selectClassifyItem(el) {
+var parent = el.parentElement;
+if (parent && (parent.id === "laborDrop" || parent.id === "nonlaborDrop")) {
+document.getElementById("classifyBank").appendChild(el);
+el.classList.remove("selected");
+classifyState.selectedItem = null;
+return;
+}
+var allItems = document.querySelectorAll(".classify-item");
+for (var i = 0; i < allItems.length; i++) allItems[i].classList.remove("selected");
+if (classifyState.selectedItem === el) {
+classifyState.selectedItem = null;
+return;
+}
+classifyState.selectedItem = el;
+el.classList.add("selected");
+showToast("Тепер натисни на категорію", "👆");
+}
+function classifyTapTarget(colEl) {
+if (event && event.target && event.target.classList && event.target.classList.contains("classify-item")) return;
+if (!classifyState.selectedItem) {
+showToast("Спочатку натисни на дохід", "💡");
+return;
+}
+var category = colEl.dataset.category;
+var dropZone = category === "labor" ? document.getElementById("laborDrop") : document.getElementById("nonlaborDrop");
+dropZone.appendChild(classifyState.selectedItem);
+classifyState.selectedItem.classList.remove("selected");
+classifyState.selectedItem = null;
+}
+function resetClassify() { initClassify(); showToast("Почато спочатку!", "🔄"); }
+function chkClassify() {
+var f = document.getElementById("s2t1f");
+if (!f) return;
+f.style.display = "block";
+var laborDrop = document.getElementById("laborDrop");
+var nonlaborDrop = document.getElementById("nonlaborDrop");
+var bank = document.getElementById("classifyBank");
+var laborItems = laborDrop.querySelectorAll(".classify-item");
+var nonlaborItems = nonlaborDrop.querySelectorAll(".classify-item");
+var bankItems = bank.querySelectorAll(".classify-item");
+if (bankItems.length > 0) {
+f.className = "feedback feedback-warning";
+f.innerHTML = "💡 Розподіли всі доходи! Залишилось: " + bankItems.length;
+return;
+}
+var ok = true;
+for (var i = 0; i < laborItems.length; i++) {
+laborItems[i].classList.remove("correct","incorrect");
+if (laborItems[i].dataset.type === "labor") laborItems[i].classList.add("correct");
+else { laborItems[i].classList.add("incorrect"); ok = false; }
+}
+for (var j = 0; j < nonlaborItems.length; j++) {
+nonlaborItems[j].classList.remove("correct","incorrect");
+if (nonlaborItems[j].dataset.type === "nonlabor") nonlaborItems[j].classList.add("correct");
+else { nonlaborItems[j].classList.add("incorrect"); ok = false; }
+}
+if (ok && laborItems.length + nonlaborItems.length === classifyData.length) {
+f.className = "feedback feedback-success";
+f.innerHTML = "<strong>✅ Чудово!</strong> Усі доходи класифіковано правильно! Тепер розподіли нетрудові на 3 групи.";
+addC("step2_task1");
+showToast("Завдання виконано!", "🎉");
+} else {
+f.className = "feedback feedback-error";
+f.innerHTML = "<strong>❌ Не зовсім.</strong> Червоним — помилка. Натисни на помилковий елемент, щоб повернути його в банк.";
+setTimeout(function() {
+var all = document.querySelectorAll(".classify-item");
+for (var k = 0; k < all.length; k++) all[k].classList.remove("correct","incorrect");
+}, 4000);
+}
+}
+var groupClassifyData = [
+{text:"🏦 Відсотки за депозитом", group:"property"},
+{text:"🏠 Орендна плата за квартиру", group:"property"},
+{text:"🎓 Стипендія сина", group:"social"},
+{text:"👴 Пенсія дідуся", group:"social"},
+{text:"🎁 Подарунок до дня народження", group:"other"},
+{text:"🎰 Виграш у лотерею", group:"other"}
+];
+var groupState = {selectedItem: null};
+function initGroupClassify() {
+groupState.selectedItem = null;
+var bank = document.getElementById("groupBank");
+if (!bank) return;
+bank.innerHTML = "";
+var targets = ["propertyDrop","socialDrop","otherDrop"];
+for (var t = 0; t < targets.length; t++) {
+var tel = document.getElementById(targets[t]);
+if (tel) tel.innerHTML = "";
+}
+var shuffled = groupClassifyData.slice().sort(function() { return Math.random() - 0.5; });
+for (var j = 0; j < shuffled.length; j++) {
+var s = shuffled[j];
+var card = document.createElement("div");
+card.className = "classify-item";
+card.dataset.group = s.group;
+card.innerHTML = '<span>📋</span><span>' + s.text + '</span>';
+card.onclick = (function(el) { return function() { selectGroupCard(el); }; })(card);
+bank.appendChild(card);
+}
+var f = document.getElementById("s2t1bf");
+if (f) f.style.display = "none";
+}
+function selectGroupCard(el) {
+var parent = el.parentElement;
+if (parent && parent.id !== "groupBank" && parent.dataset && parent.dataset.group) {
+document.getElementById("groupBank").appendChild(el);
+el.classList.remove("selected");
+groupState.selectedItem = null;
+return;
+}
+var bankCards = document.querySelectorAll("#groupBank .classify-item");
+for (var i = 0; i < bankCards.length; i++) bankCards[i].classList.remove("selected");
+if (groupState.selectedItem === el) {
+groupState.selectedItem = null;
+return;
+}
+groupState.selectedItem = el;
+el.classList.add("selected");
+showToast("Тепер натисни на категорію", "👆");
+}
+function classifyGroupTap(targetEl) {
+if (event && event.target && event.target.classList && event.target.classList.contains("classify-item")) return;
+if (!groupState.selectedItem) {
+showToast("Спочатку натисни на дохід", "💡");
+return;
+}
+targetEl.appendChild(groupState.selectedItem);
+groupState.selectedItem.classList.remove("selected");
+groupState.selectedItem = null;
+}
+function resetGroupClassify() { initGroupClassify(); showToast("Почато спочатку!", "🔄"); }
+function chkGroupClassify() {
+var f = document.getElementById("s2t1bf");
+if (!f) return;
+f.style.display = "block";
+var targets = {propertyDrop:"property", socialDrop:"social", otherDrop:"other"};
+var totalPlaced = 0;
+var ok = true;
+for (var tid in targets) {
+var el = document.getElementById(tid);
+var cards = el.querySelectorAll(".classify-item");
+totalPlaced += cards.length;
+for (var i = 0; i < cards.length; i++) {
+cards[i].classList.remove("correct","incorrect");
+if (cards[i].dataset.group !== targets[tid]) {
+cards[i].classList.add("incorrect");
+ok = false;
+} else cards[i].classList.add("correct");
+}
+}
+var bankCards = document.querySelectorAll("#groupBank .classify-item");
+if (bankCards.length > 0) {
+f.className = "feedback feedback-warning";
+f.innerHTML = "💡 Розподіли всі нетрудові доходи! Залишилось: " + bankCards.length;
+return;
+}
+if (ok) {
+f.className = "feedback feedback-success";
+f.innerHTML = "<strong>✅ Чудово!</strong> Усі нетрудові доходи розподілено правильно!";
+addC("step2_task1b");
+showToast("Завдання виконано!", "🎉");
+} else {
+f.className = "feedback feedback-error";
+f.innerHTML = "<strong>❌ Не зовсім.</strong> Червоним — помилка. Натисни на картку, щоб повернути її в банк.";
+setTimeout(function() {
+var all = document.querySelectorAll(".classify-item");
+for (var k = 0; k < all.length; k++) all[k].classList.remove("correct","incorrect");
+}, 4000);
+}
+}
+function tog(el) {
+if (el.classList.contains("disabled")) return;
+el.classList.toggle("selected");
+}
+function selRadio(el, groupId) {
+if (el.classList.contains("disabled")) return;
+var group = document.getElementById(groupId);
+var opts = group.querySelectorAll(".option");
+for (var i = 0; i < opts.length; i++) opts[i].classList.remove("selected");
+el.classList.add("selected");
+}
+function chkStartTask() {
+var opts = document.querySelectorAll("#s1t1 .option");
+var f = document.getElementById("s1t1f");
+if (!f) return;
+f.style.display = "block";
+var selOpts = [];
+for (var i = 0; i < opts.length; i++) { if (opts[i].classList.contains("selected")) selOpts.push(opts[i]); }
+if (selOpts.length !== 3) {
+f.className = "feedback feedback-warning";
+f.innerHTML = "⚠️ Обери <strong>рівно 3</strong> варіанти зі списку. Зараз обрано: " + selOpts.length + ".";
+return;
+}
+for (var j = 0; j < opts.length; j++) {
+if (opts[j].classList.contains("selected")) opts[j].classList.add("correct");
+opts[j].classList.add("disabled");
+}
+f.className = "feedback feedback-success";
+f.innerHTML = "<strong>✅ Чудово!</strong> Ти обрав(ла) 3 варіанти розподілу 8000 грн. Кожен варіант має свої переваги — важливо, щоб ти обґрунтував(ла) свій вибір. Обговори це з учителем або батьками: які витрати є потребами, а які — бажаннями? Чи залишив(ла) ти резерв? Від чого довелося відмовитися?";
+addC("step1_task1");
+showToast("Завдання виконано!", "🎉");
+}
+function chkMulti(gid, fid, need, tid) {
+var opts = document.querySelectorAll("#" + gid + " .option");
+var f = document.getElementById(fid);
+if (!f) return;
+f.style.display = "block";
+var selOpts = [];
+for (var i = 0; i < opts.length; i++) { if (opts[i].classList.contains("selected")) selOpts.push(opts[i]); }
+if (selOpts.length !== need) {
+f.className = "feedback feedback-warning";
+f.innerHTML = "⚠️ Обери <strong>" + need + "</strong> варіанти.";
+return;
+}
+var ok = true;
+for (var j = 0; j < opts.length; j++) {
+var sb = opts[j].dataset.correct === "true";
+var is = opts[j].classList.contains("selected");
+if (sb && is) opts[j].classList.add("correct");
+else if (!sb && is) { opts[j].classList.add("incorrect"); ok = false; }
+else if (sb && !is) ok = false;
+opts[j].classList.add("disabled");
+}
+if (ok) {
+f.className = "feedback feedback-success";
+f.innerHTML = "<strong>✅ Правильно!</strong> Це обґрунтований вибір.";
+addC(tid);
+showToast("Завдання виконано!", "🎉");
+} else {
+f.className = "feedback feedback-error";
+f.innerHTML = "<strong>❌ Не зовсім.</strong> Спробуй ще раз.";
+for (var k = 0; k < opts.length; k++) opts[k].classList.remove("correct","incorrect","disabled");
+}
+}
+function chkRadio(gid, fid, tid) {
+var opts = document.querySelectorAll("#" + gid + " .option");
+var f = document.getElementById(fid);
+if (!f) return;
+f.style.display = "block";
+var selected = null;
+for (var i = 0; i < opts.length; i++) { if (opts[i].classList.contains("selected")) { selected = opts[i]; break; } }
+if (!selected) {
+f.className = "feedback feedback-warning";
+f.innerHTML = "⚠️ Обери один варіант відповіді.";
+return;
+}
+var isCorrect = selected.dataset.correct === "true";
+if (isCorrect) {
+selected.classList.add("correct");
+f.className = "feedback feedback-success";
+f.innerHTML = "<strong>✅ Правильно!</strong>";
+for (var j = 0; j < opts.length; j++) opts[j].classList.add("disabled");
+addC(tid);
+showToast("Завдання виконано!", "🎉");
+} else {
+selected.classList.add("incorrect");
+f.className = "feedback feedback-error";
+f.innerHTML = "<strong>❌ Неправильно.</strong> Спробуй ще раз.";
+}
+}
+function toggleAccordion(header) {
+var item = header.parentElement;
+var wasActive = item.classList.contains("active");
+var parent = item.parentElement;
+var items = parent.querySelectorAll(".accordion-item");
+for (var i = 0; i < items.length; i++) items[i].classList.remove("active");
+if (!wasActive) {
+item.classList.add("active");
+setTimeout(function() {
+if (window.innerWidth <= 768) {
+var rect = item.getBoundingClientRect();
+if (rect.top < 100 || rect.bottom > window.innerHeight) {
+item.scrollIntoView({behavior: "smooth", block: "start"});
+}
+}
+}, 100);
+}
+}
+function chkMatching(prefix, answers, tid) {
+var f = document.getElementById(prefix + "f");
+if (!f) return;
+f.style.display = "block";
+var ok = 0;
+var total = Object.keys(answers).length;
+for (var id in answers) {
+var s = document.getElementById(id);
+s.classList.remove("correct","incorrect");
+if (s.value === answers[id]) { s.classList.add("correct"); ok++; }
+else if (s.value) s.classList.add("incorrect");
+}
+if (ok === total) {
+f.className = "feedback feedback-success";
+f.innerHTML = "<strong>✅ Чудово!</strong> Усі відповіді правильні!";
+addC(tid);
+showToast("Завдання виконано!", "🎉");
+} else {
+f.className = "feedback feedback-error";
+f.innerHTML = "<strong>❌ " + ok + "/" + total + " правильно.</strong> Спробуй ще раз.";
+setTimeout(function() { var ss = document.querySelectorAll("#" + prefix + " .matching-select"); for (var i = 0; i < ss.length; i++) ss[i].classList.remove("correct","incorrect"); }, 2000);
+}
+}
+function chkTFLoan() {
+var cards = document.querySelectorAll("#s2t2q .tf-card");
+var f = document.getElementById("s2t2f");
+if (!f) return;
+f.style.display = "block";
+var selected = null;
+for (var i = 0; i < cards.length; i++) { if (cards[i].classList.contains("selected")) { selected = cards[i]; break; } }
+if (!selected) {
+f.className = "feedback feedback-warning";
+f.innerHTML = "💡 Обери один варіант відповіді.";
+return;
+}
+var isCorrect = selected.querySelector(".tf-card-title").textContent.indexOf("Ні") !== -1;
+if (isCorrect) {
+selected.classList.add("correct");
+f.className = "feedback feedback-success";
+f.innerHTML = "<strong>✅ Правильно!</strong><br><strong>📖 Пояснення:</strong> Позика або кредит — це <strong>НЕ дохід</strong>, а <strong>залучені кошти</strong>, які потрібно повернути з відсотками. Хоча ти тимчасово отримуєш гроші, вони не збільшують твій сукупний дохід — навпаки, збільчують твої зобов'язання. Справжній дохід — це кошти, які не потрібно повертати (зарплата, стипендія, подарунок тощо).";
+for (var j = 0; j < cards.length; j++) cards[j].classList.add("disabled");
+addC("step2_task2");
+showToast("Завдання виконано!", "🎉");
+} else {
+selected.classList.add("incorrect");
+f.className = "feedback feedback-error";
+f.innerHTML = "<strong>❌ Неправильно.</strong><br><strong>📖 Пояснення:</strong> Кредит — це <strong>залучені кошти</strong>, які потрібно повернути. Вони не є доходом, бо не збільшують твоє багатство, а лише створюють зобов'язання. Спробуй ще раз.";
+}
+}
+function tfSel(el, gid, value) {
+if (el.classList.contains("disabled")) return;
+var cards = document.querySelectorAll("#" + gid + " .tf-card");
+for (var i = 0; i < cards.length; i++) cards[i].classList.remove("selected","correct","incorrect");
+el.classList.add("selected");
+var correctMap = {
+s2t3q1: "regular", s2t3q2: "once", s2t3q3: "regular", s2t3q4: "once",
+s3t3q1: "false", s3t3q2: "true", s3t3q3: "false",
+s5t2q1: "myth", s5t2q2: "truth", s5t2q3: "myth", s5t2q4: "truth"
+};
+var correct = correctMap[gid] === value;
+var f = document.getElementById(gid + "f");
+if (correct) {
+el.classList.add("correct");
+if (f) { f.style.display = "block"; f.className = "feedback feedback-success"; f.innerHTML = "<strong>✅ Правильно!</strong>"; }
+for (var i = 0; i < cards.length; i++) cards[i].classList.add("disabled");
+tfCompleted[gid] = true;
+} else {
+el.classList.add("incorrect");
+if (f) { f.style.display = "block"; f.className = "feedback feedback-error"; f.innerHTML = "<strong>❌ Неправильно.</strong> Спробуй ще раз."; }
+}
+}
+function chkAllTF(prefix, answers, tid) {
+var f = document.getElementById(prefix + "f");
+if (!f) return;
+f.style.display = "block";
+var ok = 0;
+var total = Object.keys(answers).length;
+for (var id in answers) {
+if (tfCompleted[id]) ok++;
+}
+if (ok === total) {
+f.className = "feedback feedback-success";
+f.innerHTML = "<strong>✅ Чудово!</strong> Усі відповіді правильні!";
+addC(tid);
+showToast("Завдання виконано!", "🎉");
+} else {
+f.className = "feedback feedback-warning";
+f.innerHTML = "💡 Відповідай на всі питання (" + ok + "/" + total + "), щоб завершити завдання.";
+}
+}
+function chkAllRadio(prefix, answers, tid) {
+var f = document.getElementById(prefix + "f");
+if (!f) return;
+f.style.display = "block";
+var ok = 0;
+var total = Object.keys(answers).length;
+for (var gid in answers) {
+var group = document.getElementById(gid);
+if (!group) continue;
+var selected = group.querySelector(".option.selected");
+if (!selected) continue;
+var label = selected.querySelector(".option-label").textContent.trim();
+if (label === answers[gid]) {
+selected.classList.add("correct");
+ok++;
+} else {
+selected.classList.add("incorrect");
+}
+var opts = group.querySelectorAll(".option");
+for (var i = 0; i < opts.length; i++) opts[i].classList.add("disabled");
+}
+if (ok === total) {
+f.className = "feedback feedback-success";
+f.innerHTML = "<strong>✅ Чудово!</strong> Усі відповіді правильні!";
+addC(tid);
+showToast("Завдання виконано!", "🎉");
+} else {
+f.className = "feedback feedback-error";
+f.innerHTML = "<strong>❌ " + ok + "/" + total + " правильно.</strong> Спробуй ще раз.";
+for (var k in answers) {
+var g = document.getElementById(k);
+if (g) {
+var opts = g.querySelectorAll(".option");
+for (var i = 0; i < opts.length; i++) opts[i].classList.remove("selected","correct","incorrect","disabled");
+}
+}
+}
+}
+function rate(si, r) {
+state.sr[si - 1] = r;
+saveP();
+var c = document.querySelector('.star-rating[data-skill="' + si + '"]');
+if (!c) return;
+var stars = c.querySelectorAll(".star");
+for (var i = 0; i < stars.length; i++) {
+if (i < r) stars[i].classList.add("active");
+else stars[i].classList.remove("active");
+}
+}
+function resetProgress() {
+if (confirm("Почати спочатку? Весь прогрес буде скинуто.")) {
+sessionStorage.removeItem("s29v4");
+location.reload();
+}
+}
+function showToast(msg, icon) {
+icon = icon || "✅";
+var c = document.getElementById("toastContainer");
+if (!c) return;
+var t = document.createElement("div");
+t.className = "toast";
+t.innerHTML = '<span class="toast-icon">' + icon + '</span><span class="toast-message">' + msg + '</span>';
+c.appendChild(t);
+setTimeout(function() { t.classList.add("hiding"); setTimeout(function() { t.remove(); }, 400); }, 3000);
+}
+function showProgressModal() {
+updS6();
+document.getElementById("progressModal").classList.add("active");
+var c = 0;
+for (var i = 1; i <= 5; i++) c += ST["step" + i].c;
+var p = Math.min(100, Math.round(c / TOTAL_TASKS * 100));
+var ac = PT.t > 0 ? Math.round(PT.c / PT.t * 100) : 0;
+var cs = 0;
+for (var j = 1; j <= 5; j++) { if (SC[j]) cs++; }
+var e = function(id, v) { var el = document.getElementById(id); if (el) el.textContent = v; };
+e("mT", c + "/" + TOTAL_TASKS);
+e("mC", PT.c);
+e("mS", cs + "/5");
+e("mA", ac + "%");
+e("mP", p + "%");
+var b = document.getElementById("mBar");
+if (b) b.style.width = p + "%";
+var l = "Початківець", em = "⭐☆☆☆☆";
+if (p >= 76) { l = "Експерт"; em = "⭐⭐⭐⭐⭐"; }
+else if (p >= 51) { l = "Досвідчений"; em = "⭐⭐⭐☆☆"; }
+else if (p >= 26) { l = "Учень"; em = "⭐⭐☆☆☆"; }
+e("mName", l);
+e("mEmoji", em);
+}
+function showHelpModal() { document.getElementById("helpModal").classList.add("active"); }
+function closeModal(id) { document.getElementById(id).classList.remove("active"); }
+var overlays = document.querySelectorAll(".modal-overlay");
+for (var oi = 0; oi < overlays.length; oi++) {
+overlays[oi].addEventListener("click", function(e) { if (e.target === this) this.classList.remove("active"); });
+}
+document.addEventListener("keydown", function(e) {
+if (e.key === "Escape") { var ms = document.querySelectorAll(".modal-overlay.active"); for (var i = 0; i < ms.length; i++) ms[i].classList.remove("active"); }
+});
+document.addEventListener("DOMContentLoaded", function() {
+loadP();
+goToMainPage();
+var mbIn = document.querySelectorAll('.mb-income');
+var mbEx = document.querySelectorAll('.mb-expense');
+var mbSv = document.getElementById('mbSavings');
+mbIn.forEach(function(inp) { inp.addEventListener('input', calcMyBudget); });
+mbEx.forEach(function(inp) { inp.addEventListener('input', calcMyBudget); });
+if (mbSv) mbSv.addEventListener('input', calcMyBudget);
+});
+</script>
+</body>
+</html>
